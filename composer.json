@@ -1,0 +1,12 @@
+{
+  "name": "jazas/jazas-watu",
+  "description": "Plugin that extends Watu plugin",
+  "type": "project",
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "SimpleForms\\": "./src"
+    }
+  }
+}
