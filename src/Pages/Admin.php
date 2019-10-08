@@ -4,23 +4,38 @@
 namespace SimpleForms\Pages;
 
 
+use SimpleForms\Api\SettingsApi;
 use SimpleForms\Base\BaseController;
 
 class Admin extends BaseController {
 
-    function register() {
-        add_action('admin_menu', [$this, 'add_admin_pages']);
-    }
+  /**
+   * @var SettingsApi
+   */
+  private $settings;
+  /**
+   * @var array
+   */
+  private $pages;
 
-    public function add_admin_pages() {
-        add_menu_page('Simple Forms Plugin', 'Simple Forms', 'manage_options', 'simple_forms', [
-            $this, 'admin_index'
-        ], 'dashicons-analytics', NULL);
-    }
+  public function __construct() {
+    parent::__construct();
+    $this->settings = new SettingsApi();
+    $this->pages = [
+      'page_title' => 'Simple Forms',
+      'menu_title' => 'Simple Forms',
+      'capability' => 'manage_options',
+      'menu_slug' => 'simple_forms',
+      'callback' => function () {
+        echo '<h1>Simple Forms Plugin Callback Function</h1>';
+      },
+      'icon_url' => 'dashicons-analytics',
+      'position' => NULL
+    ];
+  }
 
-    public function admin_index() {
-        // require template
-        require_once $this->pluginPath . 'templates/admin.php';
-    }
+  function register() {
+    $this->settings->addPages([$this->pages])->register();
+  }
 
 }

@@ -7,7 +7,7 @@
  */
 
 if (!defined('WP_UNINSTALL_PLUGIN')) {
-    die;
+  die;
 }
 
 // Clear database stored data via wordpress defined functions
