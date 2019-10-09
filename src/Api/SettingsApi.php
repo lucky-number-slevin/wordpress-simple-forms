@@ -12,41 +12,35 @@ class SettingsApi {
   /**
    * @var array
    */
-  private $adminPages = [];
+  private $adminPage = [];
   /**
    * @var array
    */
   private $adminSubpages = [];
 
   public function register() {
-    if (!empty($this->adminPages)) {
+    if (!empty($this->adminPage)) {
       add_action('admin_menu', [$this, 'addAdminMenu']);
     }
   }
 
-  public function addPages(array $pages) {
-    $this->adminPages = $pages;
-    return $this; // for method chaining
+  public function addMainPage(array $pages) {
+    $this->adminPage = $pages;
+    return $this;
   }
 
-  public function addSubpages(array $subpages) {
-    $this->adminSubpages = array_merge($this->adminSubpages, $subpages);
-    return $this; // for method chaining
-  }
-
-  public function withSubPage(string $title = NULL) {
-    if (empty($this->adminPages)) {
-      return $this; // for method chaining
+  public function withSubpage(string $title = NULL) {
+    if (empty($this->adminPage)) {
+      return $this;
     }
 
-    $admin_page = reset($this->adminPages);
     $subpages = [
-      'parent_slug' => $admin_page['menu_slug'],
-      'page_title' => $admin_page['page_title'],
-      'menu_title' => $title ?? $admin_page['menu_title'],
-      'capability' => $admin_page['capability'],
-      'menu_slug' => $admin_page['menu_slug'],
-      'callback' => $admin_page['callback']
+      'parent_slug' => $this->adminPage['menu_slug'],
+      'page_title' => $this->adminPage['page_title'],
+      'menu_title' => $title ?? $this->adminPage['menu_title'],
+      'capability' => $this->adminPage['capability'],
+      'menu_slug' => $this->adminPage['menu_slug'],
+      'callback' => $this->adminPage['callback']
     ];
 
     $this->adminSubpages = [$subpages];
@@ -54,13 +48,31 @@ class SettingsApi {
     return $this;
   }
 
+  public function addSubpages(array $subpages) {
+    $this->adminSubpages = array_merge($this->adminSubpages, $subpages);
+    return $this;
+  }
+
   public function addAdminMenu() {
-    foreach ($this->adminPages as $page) {
-      add_menu_page($page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback'], $page['icon_url'], $page['position']);
-    }
+    add_menu_page(
+      $this->adminPage['page_title'],
+      $this->adminPage['menu_title'],
+      $this->adminPage['capability'],
+      $this->adminPage['menu_slug'],
+      $this->adminPage['callback'],
+      $this->adminPage['icon_url'],
+      $this->adminPage['position']
+    );
 
     foreach ($this->adminSubpages as $page) {
-      add_submenu_page($page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], $page['callback']);
+      add_submenu_page(
+        $page['parent_slug'],
+        $page['page_title'],
+        $page['menu_title'],
+        $page['capability'],
+        $page['menu_slug'],
+        $page['callback']
+      );
     }
   }
 

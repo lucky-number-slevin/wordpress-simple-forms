@@ -17,7 +17,7 @@ class Admin extends BaseController {
   /**
    * @var array
    */
-  private $pages;
+  private $mainPage;
   /**
    * @var array
    */
@@ -34,29 +34,27 @@ class Admin extends BaseController {
   }
 
   function register() {
-    $this->setPages();
+    $this->setMainPage();
     $this->setSubpages();
-    $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubpages($this->subpages)->register();
+    $this->settings->addMainPage($this->mainPage)->withSubpage('Dashboard')->addSubpages($this->subpages)->register();
   }
 
-  public function setPages() {
-    $this->pages = [
-      [
-        'page_title' => 'Simple Forms',
-        'menu_title' => 'Simple Forms',
-        'capability' => 'manage_options',
-        'menu_slug' => 'simple_forms',
-        'callback' => [$this->callbacks, 'getDashboardTemplate'],
-        'icon_url' => 'dashicons-analytics',
-        'position' => NULL
-      ]
+  public function setMainPage() {
+    $this->mainPage = [
+      'page_title' => 'Simple Forms',
+      'menu_title' => 'Simple Forms',
+      'capability' => 'manage_options',
+      'menu_slug' => 'simple_forms',
+      'callback' => [$this->callbacks, 'getDashboardTemplate'],
+      'icon_url' => 'dashicons-analytics',
+      'position' => NULL
     ];
   }
 
   public function setSubpages() {
     $this->subpages = [
       [
-        'parent_slug' => reset($this->pages)['menu_slug'],
+        'parent_slug' => $this->mainPage['menu_slug'],
         'page_title' => 'Simple Forms - Add Form',
         'menu_title' => 'Add Form',
         'capability' => 'manage_options',
@@ -64,7 +62,7 @@ class Admin extends BaseController {
         'callback' => [$this->callbacks, 'getAddFormTemplate'],
       ],
       [
-        'parent_slug' => reset($this->pages)['menu_slug'],
+        'parent_slug' => $this->mainPage['menu_slug'],
         'page_title' => 'Simple Forms - Submissions',
         'menu_title' => 'Submissions',
         'capability' => 'manage_options',
