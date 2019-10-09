@@ -3,7 +3,7 @@
  * @package SimpleForms
  */
 
-namespace SimpleForms\Base;
+namespace SimpleForms;
 
 class Deactivate {
 

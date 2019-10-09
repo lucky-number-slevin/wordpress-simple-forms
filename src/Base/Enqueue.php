@@ -4,7 +4,9 @@
 namespace SimpleForms\Base;
 
 
-class Enqueue extends BaseController {
+use SimpleForms\PluginBase;
+
+class Enqueue extends PluginBase {
 
   public function register() {
     add_action('admin_enqueue_scripts', [$this, 'enqueue']);

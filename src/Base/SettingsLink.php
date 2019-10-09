@@ -2,7 +2,9 @@
 
 namespace SimpleForms\Base;
 
-class SettingsLink extends BaseController {
+use SimpleForms\PluginBase;
+
+class SettingsLink extends PluginBase {
 
   function register() {
     add_filter("plugin_action_links_$this->pluginName", [$this, 'settingsLink']);
