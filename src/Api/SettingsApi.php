@@ -46,9 +46,7 @@ class SettingsApi {
       'menu_title' => $title ?? $admin_page['menu_title'],
       'capability' => $admin_page['capability'],
       'menu_slug' => $admin_page['menu_slug'],
-      'callback' => function () {
-        echo '<h1>Simple Forms Plugin Callback Function</h1>';
-      }
+      'callback' => $admin_page['callback']
     ];
 
     $this->adminSubpages = [$subpages];

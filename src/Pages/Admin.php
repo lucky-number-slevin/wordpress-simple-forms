@@ -34,45 +34,42 @@ class Admin extends BaseController {
   }
 
   function register() {
-
     $this->setPages();
     $this->setSubpages();
-    $this->settings->addPages([$this->pages])->withSubPage('Dashboard')->addSubpages($this->subpages)->register();
+    $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubpages($this->subpages)->register();
   }
 
   public function setPages() {
     $this->pages = [
-      'page_title' => 'Simple Forms',
-      'menu_title' => 'Simple Forms',
-      'capability' => 'manage_options',
-      'menu_slug' => 'simple_forms',
-      'callback' => [$this->callbacks, 'adminDashboard'],
-      'icon_url' => 'dashicons-analytics',
-      'position' => NULL
+      [
+        'page_title' => 'Simple Forms',
+        'menu_title' => 'Simple Forms',
+        'capability' => 'manage_options',
+        'menu_slug' => 'simple_forms',
+        'callback' => [$this->callbacks, 'getDashboardTemplate'],
+        'icon_url' => 'dashicons-analytics',
+        'position' => NULL
+      ]
     ];
   }
 
   public function setSubpages() {
     $this->subpages = [
       [
-        'parent_slug' => $this->pages['menu_slug'],
+        'parent_slug' => reset($this->pages)['menu_slug'],
         'page_title' => 'Simple Forms - Add Form',
         'menu_title' => 'Add Form',
         'capability' => 'manage_options',
         'menu_slug' => 'sp_add_form',
-        'callback' => function () {
-          echo '<h1>Simple Forms - Add Form</h1>';
-        }
+        'callback' => [$this->callbacks, 'getAddFormTemplate'],
       ],
       [
-        'parent_slug' => $this->pages['menu_slug'],
+        'parent_slug' => reset($this->pages)['menu_slug'],
         'page_title' => 'Simple Forms - Submissions',
-        'menu_title' => 'Dashboard',
+        'menu_title' => 'Submissions',
         'capability' => 'manage_options',
         'menu_slug' => 'sp_dashboard',
-        'callback' => function () {
-          echo '<h1>Simple Forms - Dashboard</h1>';
-        }
+        'callback' => [$this->callbacks, 'getSubmissionsTemplate']
       ],
     ];
   }
