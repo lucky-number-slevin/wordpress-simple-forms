@@ -3,7 +3,9 @@
   "description": "Plugin that extends Watu plugin",
   "type": "project",
   "minimum-stability": "dev",
-  "require": {},
+  "require": {
+    "twig/twig": "3.x-dev"
+  },
   "autoload": {
     "psr-4": {
       "SimpleForms\\": "./src"
