@@ -1,13 +1,13 @@
 <?php
 
 
-namespace SimpleForms\Pages;
+namespace SimpleForms\Page;
 
 
 use SimpleForms\PluginBase;
-use SimpleForms\Templates\Admin\AddFormTemplate;
-use SimpleForms\Templates\Admin\DashboardTemplate;
-use SimpleForms\Templates\Admin\SubmissionsTemplate;
+use SimpleForms\Callback\Admin\AddFormTemplate;
+use SimpleForms\Callback\Admin\DashboardTemplate;
+use SimpleForms\Callback\Admin\SubmissionsTemplate;
 
 class Admin extends PluginBase {
 

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace SimpleForms\Templates\Admin;
+namespace SimpleForms\Callback\Admin;
 
 
-use SimpleForms\Templates\TemplateManagerBase;
+use SimpleForms\TemplateManagerBase;
 
 class SubmissionsTemplate extends TemplateManagerBase {
 
@@ -12,13 +12,8 @@ class SubmissionsTemplate extends TemplateManagerBase {
   const TEMPLATE_TITLE = 'Submissions';
 
   public function renderTemplate() {
-    parent::render(self::TEMPLATE_PATH);
-  }
-
-  public function getVariables() {
-    return [
+    parent::render(self::TEMPLATE_PATH, [
       'title' => self::TEMPLATE_TITLE
-    ];
+    ]);
   }
-
 }

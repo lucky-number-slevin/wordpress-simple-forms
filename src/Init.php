@@ -4,12 +4,11 @@ namespace SimpleForms;
 
 use SimpleForms\Base\Enqueue;
 use SimpleForms\Base\SettingsLink;
-use SimpleForms\Pages\Admin;
+use SimpleForms\Page\Admin;
 
 final class Init {
 
   public static function get_services() {
-    // TODO: use classes as keys and add arrays of dependencies as values
     return [
       SettingsLink::class,
       Enqueue::class,

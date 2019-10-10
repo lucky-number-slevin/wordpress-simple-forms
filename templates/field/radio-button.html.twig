@@ -1,0 +1,17 @@
+<div class="sf-radio-btn">
+
+    {% if title %}
+        <div class="sf-field-label">Field Title: {{ title }}</div>
+    {% endif %}
+
+    {% if options is not empty %}
+        {% for option in options %}
+            <div>{{ option }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if description %}
+        <div class="sf-field-description">Field Description: {{ description }}</div>
+    {% endif %}
+
+</div>
