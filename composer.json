@@ -2,9 +2,9 @@
   "name": "jazas/jazas-watu",
   "description": "Plugin that extends Watu plugin",
   "type": "project",
-  "minimum-stability": "dev",
   "require": {
-    "twig/twig": "3.x-dev"
+    "twig/twig": "^2.12",
+    "doctrine/orm": "^2.6"
   },
   "autoload": {
     "psr-4": {

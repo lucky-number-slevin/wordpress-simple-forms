@@ -5,9 +5,14 @@ namespace SimpleForms\Entity;
 
 
 use FormType;
-use SimpleForms\Entity\Field\FieldBase;
 
-class Form extends PersistenceEntity {
+/**
+ * Class Form
+ * @package SimpleForms\Entity
+ *
+ *
+ */
+class Form {
 
   /**
    * @var FormType
@@ -36,10 +41,6 @@ class Form extends PersistenceEntity {
 
   public function setFields(array $fields) {
     $this->fields = $fields;
-  }
-
-  public function addField(FieldBase $field) {
-    $this->fields[$field->getId()] = $field;
   }
 
   public function setFormResultCalculator(array $form_result_calculators) {

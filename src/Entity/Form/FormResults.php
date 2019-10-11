@@ -4,7 +4,7 @@
 namespace SimpleForms\Entity;
 
 
-class FormResults extends PersistenceEntity {
+class FormResults {
 
   /**
    * @var Form

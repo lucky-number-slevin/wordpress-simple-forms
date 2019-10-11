@@ -3,6 +3,6 @@
 
 namespace SimpleForms\Entity;
 
-class FormResultCalculator extends PersistenceEntity {
+class FormResultCalculator {
 
 }
