@@ -12,7 +12,8 @@ final class Init {
     return [
       SettingsLink::class,
       Enqueue::class,
-      Admin::class
+      Admin::class,
+      Database::class
     ];
   }
 

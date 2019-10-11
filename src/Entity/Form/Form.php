@@ -5,17 +5,26 @@ namespace SimpleForms\Entity;
 
 
 use FormType;
+use Doctrine\ORM\Mapping;
 
 /**
  * Class Form
  * @package SimpleForms\Entity
  *
- *
+ * @Mapping\Entity
+ * @Mapping\Table(name="form")
  */
 class Form {
 
   /**
+   * @Mapping\Id
+   * @Mapping\Column(type="integer")
+   * @Mapping\GeneratedValue
+   */
+  private $id;
+  /**
    * @var FormType
+   * @Mapping\Column(type="string")
    */
   private $type;
   /**

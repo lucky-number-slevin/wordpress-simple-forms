@@ -23,7 +23,7 @@ class TemplateManagerBase {
   protected $twig;
 
   public function __construct() {
-    $this->templateDir = (new PluginBase())->pluginPath . self::TEMPLATES_DIR;
+    $this->templateDir = (new PluginBase())->getPluginPath() . self::TEMPLATES_DIR;
     $this->twig = new Environment(new FilesystemLoader($this->templateDir));
   }
 
