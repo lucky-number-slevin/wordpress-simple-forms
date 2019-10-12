@@ -5,7 +5,12 @@ namespace SimpleForms\Entity\Form;
 
 
 use Doctrine\ORM\Mapping;
+use SimpleForms\Entity\EntityBase;
 use SimpleForms\Enum\FormType;
+use SimpleForms\Entity\Question\SingleAnswerQuestion;
+use SimpleForms\Entity\Question\MultipleAnswerQuestion;
+use SimpleForms\Entity\Form\FormSubmission;
+
 
 /**
  * Class Form
@@ -14,81 +19,116 @@ use SimpleForms\Enum\FormType;
  * @Mapping\Entity
  * @Mapping\Table(name="form")
  */
-class Form {
+class Form extends EntityBase {
 
-  /**
-   * @var int
-   * @Mapping\Id
-   * @Mapping\Column(type="integer")
-   * @Mapping\GeneratedValue
-   */
-  private $id;
   /**
    * @var string
    * @Mapping\Column(type="string")
    */
   private $type;
+
   /**
    * @var array
+   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Question\SingleAnswerQuestion", mappedBy="form")
    */
-  private $fields;
+  private $singleAnswerQuestions;
+
+  /**
+   * @var array
+   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Question\MultipleAnswerQuestion", mappedBy="form")
+   */
+  private $multipleAnswerQuestions;
+
   /**
    * @var FormResultCalculator
+   * @Mapping\OneToMany(targetEntity="FormResultCalculator", mappedBy="form")
    */
   private $formResultCalculators;
 
+  /**
+   * @var array
+   * @Mapping\OneToMany(targetEntity="FormSubmission", mappedBy="form")
+   */
+  private $formSubmissions;
+
+  /**
+   * Form constructor.
+   * @param string $type
+   */
   public function __construct(string $type) {
     $this->setType($type);
   }
 
   /**
-   * @return int
+   * @param string $type
    */
-  public function getId() {
-    return $this->id;
-  }
-
   public function setType(string $type) {
     if (FormType::isValid($type)) {
       $this->type = $type;
     }
   }
 
+  /**
+   * @return string
+   */
   public function getType() {
     return $this->type;
   }
 
-  public function setFields(array $fields) {
-    $this->fields = $fields;
+  /**
+   * @return array
+   */
+  public function getSingleAnswerQuestions() {
+    return $this->singleAnswerQuestions;
   }
 
-  public function setFormResultCalculator(array $form_result_calculators) {
-    $this->formResultCalculators = $form_result_calculators;
+  /**
+   * @param array $singleAnswerQuestions
+   */
+  public function setSingleAnswerQuestions(array $singleAnswerQuestions) {
+    $this->singleAnswerQuestions = $singleAnswerQuestions;
   }
 
-  public function getMaxScore(FormResultCalculator $calculator) {
-    $max_score = 0;
-//    foreach ($this->fields as $field) {
-//      foreach ($field->options as $option) {
-//        $option_max_score = 0;
-//        foreach ($option->values as $option_value) {
-//          switch (get_class($field)) {
-//            case RadioButton::class:
-//              if ($option_value->formResultCalculator == $calculator && $option_value->value > $option_max_score) {
-//                $option_max_score = $option_value->value;
-//              }
-//              break;
-//            case Checkbox::class:
-//              if ($option_value->formResultCalculator == $calculator) {
-//                $option_max_score += $option_value->value;
-//              }
-//              break;
-//          }
-//        }
-//        $max_score += $option_max_score;
-//      }
-//    }
+  /**
+   * @return array
+   */
+  public function getMultipleAnswerQuestions() {
+    return $this->multipleAnswerQuestions;
   }
 
+  /**
+   * @param array $multipleAnswerQuestions
+   */
+  public function setMultipleAnswerQuestions(array $multipleAnswerQuestions) {
+    $this->multipleAnswerQuestions = $multipleAnswerQuestions;
+  }
+
+  /**
+   * @return FormResultCalculator
+   */
+  public function getFormResultCalculators() {
+    return $this->formResultCalculators;
+  }
+
+  /**
+   * @param FormResultCalculator $formResultCalculators
+   */
+  public function setFormResultCalculators(FormResultCalculator $formResultCalculators) {
+    $this->formResultCalculators = $formResultCalculators;
+  }
+
+  /**
+   * @return array
+   */
+  public function getFormSubmissions() {
+    return $this->formSubmissions;
+  }
+
+  /**
+   * @param array $formSubmissions
+   */
+  public function setFormSubmissions(array $formSubmissions) {
+    $this->formSubmissions = $formSubmissions;
+  }
 
 }

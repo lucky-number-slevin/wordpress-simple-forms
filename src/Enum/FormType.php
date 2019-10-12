@@ -6,6 +6,7 @@ namespace SimpleForms\Enum;
 
 /**
  * Enum FormType
+ * @package SimpleForms\Enum
  */
 final class FormType extends EnumBase {
 
