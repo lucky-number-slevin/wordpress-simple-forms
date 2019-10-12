@@ -1,11 +1,11 @@
 <?php
 
 
-namespace SimpleForms\Entity;
+namespace SimpleForms\Entity\Form;
 
 
-use FormType;
 use Doctrine\ORM\Mapping;
+use SimpleForms\Enum\FormType;
 
 /**
  * Class Form
@@ -17,13 +17,14 @@ use Doctrine\ORM\Mapping;
 class Form {
 
   /**
+   * @var int
    * @Mapping\Id
    * @Mapping\Column(type="integer")
    * @Mapping\GeneratedValue
    */
   private $id;
   /**
-   * @var FormType
+   * @var string
    * @Mapping\Column(type="string")
    */
   private $type;
@@ -36,12 +37,21 @@ class Form {
    */
   private $formResultCalculators;
 
-  public function __construct(FormType $type) {
-    $this->type = $type;
+  public function __construct(string $type) {
+    $this->setType($type);
   }
 
-  public function setType(FormType $type) {
-    $this->type = $type;
+  /**
+   * @return int
+   */
+  public function getId() {
+    return $this->id;
+  }
+
+  public function setType(string $type) {
+    if (FormType::isValid($type)) {
+      $this->type = $type;
+    }
   }
 
   public function getType() {
@@ -79,5 +89,6 @@ class Form {
 //      }
 //    }
   }
+
 
 }

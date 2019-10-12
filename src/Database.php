@@ -8,8 +8,15 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 
+/**
+ * Class Database
+ * @package SimpleForms
+ */
 class Database {
 
+  /**
+   * @var EntityManager
+   */
   private $entityManager;
 
   public function __construct() {
@@ -22,9 +29,9 @@ class Database {
 
     $db_config = [
       'driver' => 'pdo_mysql',
-      'user' => 'jazas',
-      'password' => 'jazas',
-      'dbname' => 'jazas'
+      'user' => DB_USER,
+      'password' => DB_PASSWORD,
+      'dbname' => DB_NAME
     ];
 
     try {

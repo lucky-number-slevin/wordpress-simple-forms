@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SimpleForms\Entity;
+namespace SimpleForms\Entity\Form;
 
 class FormResultCalculator {
 
