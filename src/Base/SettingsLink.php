@@ -1,13 +1,16 @@
 <?php
 
+
 namespace SimpleForms\Base;
 
+
 use SimpleForms\PluginBase;
+
 
 class SettingsLink extends PluginBase {
 
   function register() {
-    add_filter("plugin_action_links_$this->pluginName", [$this, 'settingsLink']);
+    add_filter("plugin_action_links_{$this->getPluginName()}", [$this, 'settingsLink']);
   }
 
   public function settingsLink($links) {

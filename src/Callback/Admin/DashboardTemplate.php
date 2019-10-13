@@ -6,6 +6,7 @@ namespace SimpleForms\Callback\Admin;
 
 use SimpleForms\TemplateManagerBase;
 
+
 class DashboardTemplate extends TemplateManagerBase {
 
   const TEMPLATE_PATH = 'admin/dashboard.html.twig';

@@ -10,6 +10,7 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
+
 class TemplateManagerBase {
 
   const TEMPLATES_DIR = 'templates';
@@ -23,7 +24,7 @@ class TemplateManagerBase {
   protected $twig;
 
   public function __construct() {
-    $this->templateDir = (new PluginBase())->pluginPath . self::TEMPLATES_DIR;
+    $this->templateDir = (new PluginBase())->getPluginPath() . self::TEMPLATES_DIR;
     $this->twig = new Environment(new FilesystemLoader($this->templateDir));
   }
 

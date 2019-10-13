@@ -1,10 +1,13 @@
 <?php
 
+
 namespace SimpleForms;
+
 
 use SimpleForms\Base\Enqueue;
 use SimpleForms\Base\SettingsLink;
 use SimpleForms\Page\Admin;
+
 
 final class Init {
 
@@ -12,7 +15,8 @@ final class Init {
     return [
       SettingsLink::class,
       Enqueue::class,
-      Admin::class
+      Admin::class,
+      Database::class
     ];
   }
 
