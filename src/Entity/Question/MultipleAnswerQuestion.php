@@ -7,6 +7,7 @@ namespace SimpleForms\Entity\Question;
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
 use SimpleForms\Entity\Form\Form;
+use SimpleForms\Enum\QuestionType;
 
 
 /**
@@ -35,6 +36,16 @@ class MultipleAnswerQuestion extends EntityBase {
    * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Answer\Answer", mappedBy="question")
    */
   private $answers;
+
+  /**
+   * MultipleAnswerQuestion constructor.
+   * @param string $type
+   */
+  public function __construct(string $type) {
+    if (QuestionType::isValidQuestionType($type, $this)) {
+      $this->type = $type;
+    }
+  }
 
   /**
    * @return Form

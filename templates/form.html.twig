@@ -1,0 +1,8 @@
+<form class="sp-form" action="{{ action }}">
+    {% if children is not empty %}
+        {% for child in children %}
+            {{ child.content }}
+        {% endfor %}
+    {% endif %}
+    <button type="submit">{{ submit }}</button>
+</form>

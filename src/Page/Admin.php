@@ -5,17 +5,26 @@ namespace SimpleForms\Page;
 
 
 use SimpleForms\PluginBase;
-use SimpleForms\Callback\Admin\AddFormTemplate;
-use SimpleForms\Callback\Admin\DashboardTemplate;
-use SimpleForms\Callback\Admin\SubmissionsTemplate;
+use SimpleForms\Callback\Admin\DashboardPageCallback;
+use SimpleForms\Callback\Admin\AddFormPageCallback;
+use SimpleForms\Callback\Admin\SubmissionsPageCallback;
 
 
+/**
+ * Class Admin
+ * @package SimpleForms\Page
+ */
 class Admin extends PluginBase {
+
+  const MENU_SLUG_PREFIX = 'sp_';
+
+  const PAGE_TITLE_PREFIX = 'SP - ';
 
   /**
    * @var array
    */
   private $primaryPage;
+
   /**
    * @var array
    */
@@ -59,7 +68,7 @@ class Admin extends PluginBase {
       'menu_title' => 'Simple Forms',
       'capability' => 'manage_options',
       'menu_slug' => 'simple_forms',
-      'callback' => [new DashboardTemplate(), 'renderTemplate'],
+      'callback' => [new DashboardPageCallback(), 'renderTemplate'],
       'icon_url' => 'dashicons-analytics',
       'position' => NULL
     ];
@@ -87,19 +96,19 @@ class Admin extends PluginBase {
       $secondary_pages = [
         [
           'parent_slug' => $this->primaryPage['menu_slug'],
-          'page_title' => 'Simple Forms - Add Form',
+          'page_title' => static::PAGE_TITLE_PREFIX . 'Add Form',
           'menu_title' => 'Add Form',
           'capability' => 'manage_options',
-          'menu_slug' => 'sp_add_form',
-          'callback' => [new AddFormTemplate(), 'renderTemplate'],
+          'menu_slug' => static::MENU_SLUG_PREFIX . 'add_form',
+          'callback' => [new AddFormPageCallback(), 'renderTemplate'],
         ],
         [
           'parent_slug' => $this->primaryPage['menu_slug'],
-          'page_title' => 'Simple Forms - Submissions',
+          'page_title' => static::PAGE_TITLE_PREFIX . 'Submissions',
           'menu_title' => 'Submissions',
           'capability' => 'manage_options',
-          'menu_slug' => 'sp_dashboard',
-          'callback' => [new SubmissionsTemplate(), 'renderTemplate']
+          'menu_slug' => static::MENU_SLUG_PREFIX . 'dashboard',
+          'callback' => [new SubmissionsPageCallback(), 'renderTemplate']
         ],
       ];
       $this->secondaryPages = array_merge($this->secondaryPages, $secondary_pages);

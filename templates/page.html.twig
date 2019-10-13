@@ -1,0 +1,7 @@
+{% if children is not empty %}
+    <div class="sp-page">
+        {% for child in children %}
+            {{ child.content }}
+        {% endfor %}
+    </div>
+{% endif %}

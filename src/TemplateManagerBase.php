@@ -11,6 +11,10 @@ use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
 
+/**
+ * Class TemplateManagerBase
+ * @package SimpleForms
+ */
 class TemplateManagerBase {
 
   const TEMPLATES_DIR = 'templates';
@@ -28,6 +32,12 @@ class TemplateManagerBase {
     $this->twig = new Environment(new FilesystemLoader($this->templateDir));
   }
 
+  /**
+   * Renders a twig template
+   *
+   * @param $template_path
+   * @param array $variables
+   */
   public function render($template_path, $variables = []) {
     try {
       echo $this->twig->render($template_path, $variables);

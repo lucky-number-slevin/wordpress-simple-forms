@@ -1,0 +1,12 @@
+<div class="sp-select">
+    <label class="sp-select-label">
+        {% if label %}
+            {{ label }}
+        {% endif %}
+        <select class="sp-select-element">
+            {% for option_value, option_label in options %}
+            <option class="sp-select-option" value="{{ option_value }}">{{ option_label }}</option>
+            {% endif %}
+        </select>
+    </label>
+</div>
