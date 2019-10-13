@@ -7,9 +7,6 @@ namespace SimpleForms\Entity\Form;
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
 use SimpleForms\Enum\FormType;
-use SimpleForms\Entity\Question\SingleAnswerQuestion;
-use SimpleForms\Entity\Question\MultipleAnswerQuestion;
-use SimpleForms\Entity\Form\FormSubmission;
 
 
 /**

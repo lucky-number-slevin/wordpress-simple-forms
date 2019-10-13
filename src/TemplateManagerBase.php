@@ -10,6 +10,7 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
+
 class TemplateManagerBase {
 
   const TEMPLATES_DIR = 'templates';

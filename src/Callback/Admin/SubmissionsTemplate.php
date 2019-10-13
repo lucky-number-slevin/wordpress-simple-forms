@@ -6,6 +6,7 @@ namespace SimpleForms\Callback\Admin;
 
 use SimpleForms\TemplateManagerBase;
 
+
 class SubmissionsTemplate extends TemplateManagerBase {
 
   const TEMPLATE_PATH = 'admin/submissions.html.twig';
@@ -16,4 +17,5 @@ class SubmissionsTemplate extends TemplateManagerBase {
       'title' => self::TEMPLATE_TITLE
     ]);
   }
+
 }

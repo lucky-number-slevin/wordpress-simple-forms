@@ -3,6 +3,7 @@
 
 namespace SimpleForms\Enum;
 
+
 /**
  * Enum QuestionType
  * @package SimpleForms\Enum

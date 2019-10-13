@@ -9,6 +9,7 @@ use SimpleForms\Callback\Admin\AddFormTemplate;
 use SimpleForms\Callback\Admin\DashboardTemplate;
 use SimpleForms\Callback\Admin\SubmissionsTemplate;
 
+
 class Admin extends PluginBase {
 
   /**
@@ -24,7 +25,7 @@ class Admin extends PluginBase {
     $this->setPrimaryPage();
     $this->setPrimarySubPage('Dashboard');
     $this->setSecondaryPages();
-    if(!empty($this->primaryPage)) {
+    if (!empty($this->primaryPage)) {
       add_action('admin_menu', [$this, 'registerPages']);
     }
   }

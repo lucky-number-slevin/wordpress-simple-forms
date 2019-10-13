@@ -3,11 +3,11 @@
 
 namespace SimpleForms\Entity\Answer;
 
+
 use Doctrine\ORM\Mapping;
-use SimpleForms\Entity\Answer\Answer;
 use SimpleForms\Entity\EntityBase;
 use SimpleForms\Entity\Form\FormResultCalculator;
-use SimpleForms\Entity\Form\FormSubmission;
+
 
 /**
  * Class Value
@@ -33,6 +33,7 @@ class AnswerValue extends EntityBase {
   /**
    * @var FormResultCalculator
    * @Mapping\ManyToOne(targetEntity="SimpleForms\Entity\Form\FormResultCalculator", inversedBy="answerValues")
+   * @Mapping\Column(name="form_result_calculator_id")
    */
   private $formResultCalculator;
 

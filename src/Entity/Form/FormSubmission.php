@@ -3,11 +3,11 @@
 
 namespace SimpleForms\Entity\Form;
 
-use DateTime;
+
 use Doctrine\ORM\Mapping;
+use DateTime;
 use SimpleForms\Entity\EntityBase;
-use SimpleForms\Entity\Form\Form;
-use SimpleForms\Entity\Answer\AnswerValue;
+
 
 /**
  * Class FormSubmission

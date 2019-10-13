@@ -3,9 +3,11 @@
 
 namespace SimpleForms\Entity\Answer;
 
+
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
 use SimpleForms\Entity\Question\MultipleAnswerQuestion;
+
 
 /**
  * Class Answer
@@ -28,7 +30,7 @@ class Answer extends EntityBase {
    * form score calculation. For example, radio button
    * can be used for "male or female" question which is
    * not part of form score calculation
-   * @Mapping\Column(type="boolean")
+   * @Mapping\Column(type="boolean", name="is_calculable")
    */
   private $isCalculable;
 

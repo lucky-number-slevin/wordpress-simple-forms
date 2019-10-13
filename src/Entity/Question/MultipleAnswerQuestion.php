@@ -3,10 +3,11 @@
 
 namespace SimpleForms\Entity\Question;
 
+
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
 use SimpleForms\Entity\Form\Form;
-use SimpleForms\Entity\Answer\Answer;
+
 
 /**
  * Class MultipleAnswerQuestion
@@ -24,16 +25,16 @@ class MultipleAnswerQuestion extends EntityBase {
   private $form;
 
   /**
-   * @var array
-   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Answer\Answer", mappedBy="question")
-   */
-  private $answers;
-
-  /**
    * @var string
    * @Mapping\Column(type="string")
    */
   private $type;
+
+  /**
+   * @var array
+   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Answer\Answer", mappedBy="question")
+   */
+  private $answers;
 
   /**
    * @return Form
@@ -50,20 +51,6 @@ class MultipleAnswerQuestion extends EntityBase {
   }
 
   /**
-   * @return array
-   */
-  public function getAnswers() {
-    return $this->answers;
-  }
-
-  /**
-   * @param array $answers
-   */
-  public function setAnswers(array $answers) {
-    $this->answers = $answers;
-  }
-
-  /**
    * @return string
    */
   public function getType() {
@@ -75,6 +62,20 @@ class MultipleAnswerQuestion extends EntityBase {
    */
   public function setType(string $type) {
     $this->type = $type;
+  }
+
+  /**
+   * @return array
+   */
+  public function getAnswers() {
+    return $this->answers;
+  }
+
+  /**
+   * @param array $answers
+   */
+  public function setAnswers(array $answers) {
+    $this->answers = $answers;
   }
 
 }

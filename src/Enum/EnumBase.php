@@ -6,6 +6,7 @@ namespace SimpleForms\Enum;
 
 use ReflectionClass;
 
+
 abstract class EnumBase {
 
   final public static function getConstants() {

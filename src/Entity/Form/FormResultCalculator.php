@@ -3,10 +3,10 @@
 
 namespace SimpleForms\Entity\Form;
 
+
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
-use SimpleForms\Entity\Form\FormResultMessage;
-use SimpleForms\Entity\Answer\AnswerValue;
+
 
 /**
  * Class FormResultCalculator

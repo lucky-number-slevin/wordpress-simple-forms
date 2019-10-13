@@ -3,8 +3,10 @@
 
 namespace SimpleForms\Entity\Form;
 
+
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
+
 
 /**
  * Class FormResultMessage
@@ -18,6 +20,7 @@ class FormResultMessage extends EntityBase {
   /**
    * @var FormResultCalculator
    * @Mapping\ManyToOne(targetEntity="FormResultMessage", inversedBy="formResultMessages")
+   * @Mapping\Column(name="form_result_calculator_id")
    */
   private $formResultCalculator;
 

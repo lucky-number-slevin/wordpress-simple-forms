@@ -3,10 +3,12 @@
 
 namespace SimpleForms\Entity\Question;
 
+
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
 use SimpleForms\Entity\Form\Form;
 use SimpleForms\Enum\QuestionType;
+
 
 /**
  * Class SingleAnswerQuestion
@@ -25,17 +27,17 @@ class SingleAnswerQuestion extends EntityBase {
 
   /**
    * @var string
-   * @Mapping\Column(type="string")
-   */
-  private $answer;
-
-  /**
-   * @var string
    * $type should always be QuestionType::TEXT_INPUT
    * and should not have setter, only getter
    * @Mapping\Column(type="string")
    */
   private $type = QuestionType::TEXT_INPUT;
+
+  /**
+   * @var string
+   * @Mapping\Column(type="string")
+   */
+  private $answer;
 
   /**
    * @return Form
@@ -54,6 +56,13 @@ class SingleAnswerQuestion extends EntityBase {
   /**
    * @return string
    */
+  public function getType(): string {
+    return $this->type;
+  }
+
+  /**
+   * @return string
+   */
   public function getAnswer() {
     return $this->answer;
   }
@@ -63,13 +72,6 @@ class SingleAnswerQuestion extends EntityBase {
    */
   public function setAnswer(string $answer) {
     $this->answer = $answer;
-  }
-
-  /**
-   * @return string
-   */
-  public function getType() {
-    return $this->type;
   }
 
 }
