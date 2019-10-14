@@ -1,20 +1,20 @@
 <?php
 
 
-namespace SimpleForms\Callback\Partial\Form\Field;
+namespace SimpleForms\Callback\Partial\FormField;
 
 
 /**
- * Class ButtonCallback
+ * Class SelectGroupCallback
  * @package SimpleForms\Callback\Partial\Form\Field
  */
-class ButtonCallback extends FieldCallbackBase {
+class SelectGroupCallback extends FormFieldCallbackBase {
 
   /**
    * @inheritDoc
    */
   public function getTemplatePath() {
-    return self::PARTIAL_TEMPLATE_SUBDIRECTORY . '/button.html.twig';
+    return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/select-group.html.twig';
   }
 
   /**
@@ -23,7 +23,8 @@ class ButtonCallback extends FieldCallbackBase {
   public function getAllowedTemplateVariables() {
     return [
       'label',
-      'type'
+      'options'
     ];
   }
+
 }

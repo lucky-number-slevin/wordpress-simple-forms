@@ -3,6 +3,7 @@
 
 namespace SimpleForms\Enum;
 
+
 /**
  * Enum FormFieldType
  * @package SimpleForms\Enum

@@ -1,19 +1,20 @@
 <?php
 
 
-namespace SimpleForms\Callback\Partial\Form\Field;
+namespace SimpleForms\Callback\Partial\FormField;
+
 
 /**
- * Class CheckboxGroupCallback
+ * Class ButtonCallback
  * @package SimpleForms\Callback\Partial\Form\Field
  */
-class CheckboxGroupCallback extends FieldCallbackBase {
+class ButtonCallback extends FormFieldCallbackBase {
 
   /**
    * @inheritDoc
    */
   public function getTemplatePath() {
-    return self::PARTIAL_TEMPLATE_SUBDIRECTORY . '/checkbox-group.html.twig';
+    return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/button.html.twig';
   }
 
   /**
@@ -22,7 +23,8 @@ class CheckboxGroupCallback extends FieldCallbackBase {
   public function getAllowedTemplateVariables() {
     return [
       'label',
-      'options'
+      'type'
     ];
   }
+
 }

@@ -1,19 +1,20 @@
 <?php
 
 
-namespace SimpleForms\Callback\Partial\Form\Field;
+namespace SimpleForms\Callback\Partial\FormField;
+
 
 /**
- * Class RadioGroupCallback
+ * Class TextInputFieldCallback
  * @package SimpleForms\Callback\Partial\Form\Field
  */
-class RadioGroupCallback extends FieldCallbackBase {
+class TextInputCallback extends FormFieldCallbackBase {
 
   /**
    * @inheritDoc
    */
   public function getTemplatePath() {
-    return self::PARTIAL_TEMPLATE_SUBDIRECTORY . '/radio-group.html.twig';
+    return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/text-input.html.twig';
   }
 
   /**
@@ -21,8 +22,9 @@ class RadioGroupCallback extends FieldCallbackBase {
    */
   public function getAllowedTemplateVariables() {
     return [
+      'name',
       'label',
-      'options'
     ];
   }
+
 }

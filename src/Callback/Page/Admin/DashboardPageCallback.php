@@ -6,6 +6,7 @@ namespace SimpleForms\Callback\Page\Admin;
 
 use SimpleForms\Callback\Page\PageCallbackBase;
 
+
 /**
  * Class DashboardPageCallback
  * @package SimpleForms\Callback\Page\Admin
@@ -35,4 +36,5 @@ class DashboardPageCallback extends PageCallbackBase {
   public function getChildCallbacks() {
     return [];
   }
+
 }

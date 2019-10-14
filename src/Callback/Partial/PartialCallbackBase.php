@@ -13,7 +13,10 @@ use SimpleForms\TemplateManagerBase;
  */
 abstract class PartialCallbackBase extends TemplateManagerBase implements PartialCallbackInterface {
 
-  const PARTIAL_TEMPLATE_SUBDIRECTORY = 'partial';
+  /**
+   * Location of all partial callback templates
+   */
+  const PARTIAL_TEMPLATES_DIRECTORY = 'partial';
 
   /**
    * @inheritDoc

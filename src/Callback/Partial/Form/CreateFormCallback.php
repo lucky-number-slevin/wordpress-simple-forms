@@ -6,6 +6,7 @@ namespace SimpleForms\Callback\Partial\Form;
 
 use SimpleForms\Enum\FormFieldType;
 
+
 /**
  * Class CreateFormCallback
  * @package SimpleForms\Callback\Partial
@@ -16,7 +17,7 @@ class CreateFormCallback extends FormCallbackBase {
    * @inheritDoc
    */
   public function getTemplatePath() {
-    return 'partial/create-form.html.twig';
+    return static::FORM_TEMPLATES_DIRECTORY . '/create-form.html.twig';
   }
 
   /**
@@ -103,4 +104,5 @@ class CreateFormCallback extends FormCallbackBase {
       self::FORM_FIELDS_KEY => $form_fields
     ];
   }
+
 }

@@ -3,20 +3,27 @@
 
 namespace SimpleForms\Callback\Partial\Form;
 
-use SimpleForms\Callback\Partial\Form\Field\ButtonCallback;
-use SimpleForms\Callback\Partial\Form\Field\CheckboxGroupCallback;
-use SimpleForms\Callback\Partial\Form\Field\RadioGroupCallback;
-use SimpleForms\Callback\Partial\Form\Field\SelectGroupCallback;
-use SimpleForms\Callback\Partial\Form\Field\TextInputCallback;
+
+use SimpleForms\Callback\Partial\FormField\ButtonCallback;
+use SimpleForms\Callback\Partial\FormField\CheckboxGroupCallback;
+use SimpleForms\Callback\Partial\FormField\RadioGroupCallback;
+use SimpleForms\Callback\Partial\FormField\SelectGroupCallback;
+use SimpleForms\Callback\Partial\FormField\TextInputCallback;
+use SimpleForms\Callback\Partial\PartialCallbackBase;
 use SimpleForms\Callback\PartialCallbackRenderer;
 use SimpleForms\Enum\FormFieldType;
-use SimpleForms\TemplateManagerBase;
+
 
 /**
  * Class FormCallbackBase
  * @package SimpleForms\Callback
  */
-abstract class FormCallbackBase extends TemplateManagerBase implements FormCallbackInterface {
+abstract class FormCallbackBase extends PartialCallbackBase {
+
+  /**
+   * Location of all form callback templates
+   */
+  const FORM_TEMPLATES_DIRECTORY =  self::PARTIAL_TEMPLATES_DIRECTORY . '/form';
 
   const FORM_FIELDS_KEY = 'fields';
 
@@ -73,4 +80,5 @@ abstract class FormCallbackBase extends TemplateManagerBase implements FormCallb
     }
     return [];
   }
+
 }

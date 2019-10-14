@@ -6,6 +6,7 @@ namespace SimpleForms\Callback\Page\Admin;
 
 use SimpleForms\Callback\Page\PageCallbackBase;
 
+
 /**
  * Class SubmissionsPageCallback
  * @package SimpleForms\Callback\Page\Admin
@@ -34,4 +35,5 @@ class SubmissionsPageCallback extends PageCallbackBase {
   public function getChildCallbacks() {
     return [];
   }
+
 }

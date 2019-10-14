@@ -24,22 +24,24 @@ final class QuestionType extends EnumBase {
    * @return bool
    */
   public static final function isValidQuestionType(string $type, $question) {
-    switch(get_class($question)) {
+    switch (get_class($question)) {
       case MultipleAnswerQuestion::class:
         switch ($type) {
           case self::RADIO_BUTTON:
           case self::CHECKBOX:
             return TRUE;
-          default: return FALSE;
+          default:
+            return FALSE;
         }
         break;
       case SingleAnswerQuestion::class:
-        if($type === self::TEXT_INPUT) {
+        if ($type === self::TEXT_INPUT) {
           return TRUE;
         }
         return FALSE;
         break;
-      default: return FALSE;
+      default:
+        return FALSE;
     }
   }
 

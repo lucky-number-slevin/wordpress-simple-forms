@@ -1,16 +1,22 @@
 <?php
 
 
-namespace SimpleForms\Callback\Partial\Form\Field;
+namespace SimpleForms\Callback\Partial\FormField;
 
 
 use SimpleForms\Callback\Partial\PartialCallbackBase;
+
 
 /**
  * Class FieldCallbackBase
  * @package SimpleForms\Callback\Partial\Form\Field
  */
-abstract class FieldCallbackBase extends PartialCallbackBase {
+abstract class FormFieldCallbackBase extends PartialCallbackBase {
+
+  /**
+   * Location of all form field callback templates
+   */
+  const FORM_FIELD_TEMPLATES_DIRECTORY = self::PARTIAL_TEMPLATES_DIRECTORY . '/form_field';
 
   /**
    * @var array
@@ -46,7 +52,7 @@ abstract class FieldCallbackBase extends PartialCallbackBase {
    * @return array
    */
   private function filterTemplateVariables(array $variables) {
-    if(empty($variables)) {
+    if (empty($variables)) {
       return [];
     }
     $allowed_variables = $this->getAllowedTemplateVariables() ?? [];

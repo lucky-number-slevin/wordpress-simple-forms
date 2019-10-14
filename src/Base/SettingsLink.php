@@ -7,6 +7,10 @@ namespace SimpleForms\Base;
 use SimpleForms\PluginBase;
 
 
+/**
+ * Class SettingsLink
+ * @package SimpleForms\Base
+ */
 class SettingsLink extends PluginBase {
 
   function register() {

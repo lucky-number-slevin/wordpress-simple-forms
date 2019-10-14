@@ -1,19 +1,20 @@
 <?php
 
 
-namespace SimpleForms\Callback\Partial\Form\Field;
+namespace SimpleForms\Callback\Partial\FormField;
+
 
 /**
- * Class SelectGroupCallback
+ * Class CheckboxGroupCallback
  * @package SimpleForms\Callback\Partial\Form\Field
  */
-class SelectGroupCallback extends FieldCallbackBase {
+class CheckboxGroupCallback extends FormFieldCallbackBase {
 
   /**
    * @inheritDoc
    */
   public function getTemplatePath() {
-    return self::PARTIAL_TEMPLATE_SUBDIRECTORY . '/select-group.html.twig';
+    return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/checkbox-group.html.twig';
   }
 
   /**
@@ -25,4 +26,5 @@ class SelectGroupCallback extends FieldCallbackBase {
       'options'
     ];
   }
+
 }

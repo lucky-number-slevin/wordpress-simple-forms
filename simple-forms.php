@@ -18,9 +18,11 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
   require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
+
 use SimpleForms\Activate;
 use SimpleForms\Deactivate;
 use SimpleForms\Init;
+
 
 /**
  * Code that runs during plugin activation

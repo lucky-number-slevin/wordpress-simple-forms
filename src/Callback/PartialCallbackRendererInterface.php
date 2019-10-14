@@ -3,6 +3,7 @@
 
 namespace SimpleForms\Callback;
 
+
 /**
  * Provides a method that can be called inside a template
  * to render partial callback.

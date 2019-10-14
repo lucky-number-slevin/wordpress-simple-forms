@@ -7,6 +7,10 @@ namespace SimpleForms\Base;
 use SimpleForms\PluginBase;
 
 
+/**
+ * Class Enqueue
+ * @package SimpleForms\Base
+ */
 class Enqueue extends PluginBase {
 
   public function register() {

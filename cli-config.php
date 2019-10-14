@@ -4,8 +4,10 @@
  * Usage: ./vendor/bin/doctrine <command> [option] [arguments]
  */
 
+
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use SimpleForms\Database;
+
 
 $wp_root_path = dirname(__FILE__, 4);
 $wp_config_path = $wp_root_path . '/wp-config.php';

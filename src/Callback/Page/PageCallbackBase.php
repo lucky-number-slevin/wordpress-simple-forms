@@ -3,8 +3,10 @@
 
 namespace SimpleForms\Callback\Page;
 
+
 use SimpleForms\Callback\PartialCallbackRenderer;
 use SimpleForms\TemplateManagerBase;
+
 
 /**
  * Allows the callback to render other callbacks as
@@ -15,7 +17,12 @@ use SimpleForms\TemplateManagerBase;
  */
 abstract class PageCallbackBase extends TemplateManagerBase implements PageCallbackInterface {
 
-  const DEFAULT_PAGE_TEMPLATE_PATH = 'page/page.html.twig';
+  /**
+   * Location of all page callback templates
+   */
+  const PAGE_TEMPLATES_DIRECTORY = 'page';
+
+  const DEFAULT_PAGE_TEMPLATE_PATH =  self::PAGE_TEMPLATES_DIRECTORY . '/page.html.twig';
 
   /**
    * @var string
@@ -38,10 +45,10 @@ abstract class PageCallbackBase extends TemplateManagerBase implements PageCallb
    * @throws \Exception
    */
   private function processChildCallbacks(array $child_callbacks) {
-    if(empty($child_callbacks)) {
+    if (empty($child_callbacks)) {
       return [];
     }
-    $processed_child_callbacks = []; 
+    $processed_child_callbacks = [];
     foreach ($child_callbacks as $callback_class) {
       $callback = new $callback_class();
       $processed_child_callbacks[] = new PartialCallbackRenderer($callback);
