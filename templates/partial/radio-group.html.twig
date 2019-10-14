@@ -1,0 +1,13 @@
+<div class="sp-radio-group-wrap">
+    {% if label %}
+        <label class="sp-radio-group-label">
+            {{ label }}
+        </label>
+    {% endif %}
+    {% for option in options %}
+        <label class="sp-radio-label">
+            {{ option.label }}
+            <input class="sp-radio" type="radio" value="{{ option.value }}">
+        </label>
+    {% endfor %}
+</div>

@@ -1,0 +1,18 @@
+<div class="sp-select-wrap">
+
+    {% if label %}
+    <label>
+        {{ label }}
+        {% endif %}
+
+        <select class="sp-select">
+            {% for option in options %}
+                <option value="{{ option.value }}">{{ option.label }}</option>
+            {% endfor %}
+        </select>
+
+        {% if label %}
+    </label>
+    {% endif %}
+
+</div>

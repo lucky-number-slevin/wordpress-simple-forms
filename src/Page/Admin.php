@@ -5,9 +5,9 @@ namespace SimpleForms\Page;
 
 
 use SimpleForms\PluginBase;
-use SimpleForms\Callback\Admin\DashboardPageCallback;
-use SimpleForms\Callback\Admin\AddFormPageCallback;
-use SimpleForms\Callback\Admin\SubmissionsPageCallback;
+use SimpleForms\Callback\Page\Admin\DashboardPageCallback;
+use SimpleForms\Callback\Page\Admin\AddFormPageCallback;
+use SimpleForms\Callback\Page\Admin\SubmissionsPageCallback;
 
 
 /**

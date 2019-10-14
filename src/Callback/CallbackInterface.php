@@ -11,28 +11,26 @@ namespace SimpleForms\Callback;
 interface CallbackInterface {
 
   /**
-   * Return template path relative to templates base
-   * directory
+   * Return callback's template path relative to templates
+   * base directory
    *
    * @return string
    */
   public function getTemplatePath();
 
   /**
-   * Returns an array of all allowed parameters that will be
-   * used as keys for variables which will be rendered in the
-   * callback template
-   *
-   * @return mixed
-   */
-  public function getCallbackParameterKeys();
-
-  /**
-   * Returns all the callbacks classes with their parameters
-   * in order in which you want them to be rendered.
+   * Returns variables that will serve as context for the
+   * callback's template
    *
    * @return array
    */
-  public function getChildCallbacks();
+  public function getTemplateVariables();
+
+  /**
+   * Renders the callback's template
+   *
+   * @return void
+   */
+  public function renderTemplate();
 
 }
