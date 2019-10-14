@@ -25,6 +25,12 @@ class Form extends EntityBase {
   private $type;
 
   /**
+   * @var string
+   * @Mapping\Column(type="string")
+   */
+  private $name;
+
+  /**
    * @var array
    * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Question\SingleAnswerQuestion", mappedBy="form")
    */
@@ -51,6 +57,7 @@ class Form extends EntityBase {
   /**
    * Form constructor.
    * @param string $type
+   * @throws \ReflectionException
    */
   public function __construct(string $type) {
     $this->setType($type);
@@ -58,6 +65,7 @@ class Form extends EntityBase {
 
   /**
    * @param string $type
+   * @throws \ReflectionException
    */
   public function setType(string $type) {
     if (FormType::isValid($type)) {
@@ -70,6 +78,20 @@ class Form extends EntityBase {
    */
   public function getType() {
     return $this->type;
+  }
+
+  /**
+   * @return string
+   */
+  public function getName() {
+    return $this->name;
+  }
+
+  /**
+   * @param string $name
+   */
+  public function setName(string $name) {
+    $this->name = $name;
   }
 
   /**

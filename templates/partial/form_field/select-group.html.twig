@@ -1,13 +1,13 @@
-<div class="sp-select-wrap">
+<div id="{{ id }}" class="sp-select-wrap js-form-element">
 
     {% if label %}
-    <label>
+    <label class="sp-selecet-label">
         {{ label }}
         {% endif %}
 
         <select class="sp-select">
             {% for option in options %}
-                <option value="{{ option.value }}">{{ option.label }}</option>
+                <option id="{{ option.id }}" class="sp-select-option" value="{{ option.value }}">{{ option.label }}</option>
             {% endfor %}
         </select>
 

@@ -1,6 +1,9 @@
-<div class="sp-text-input-wrap">
+<div {{ id }} class="sp-text-input-wrap js-form-element">
     {% if label %}
-        <label class="sp-text-input-label"> {{ label }} </label>
+    <label class="sp-text-input-label"> {{ label }}
+        {% endif %}
+        <input class="sp-text-input" type="text" name=" {{ name }}"/>
+        {% if label %}
+    </label>
     {% endif %}
-    <input class="sp-text-input" type="text" name=" {{ name }}"/>
 </div>

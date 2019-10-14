@@ -18,7 +18,7 @@ class Enqueue extends PluginBase {
   }
 
   function enqueue() {
-    wp_enqueue_style('simple_forms_style', $this->getPluginUrl() . 'assets/style.css');
+    wp_enqueue_style('simple_forms_style', $this->getPluginUrl() . 'assets/style.css', ['jquery']);
     wp_enqueue_script('simple_forms_script', $this->getPluginUrl() . 'assets/script.js');
   }
 

@@ -23,7 +23,7 @@ abstract class FormCallbackBase extends PartialCallbackBase {
   /**
    * Location of all form callback templates
    */
-  const FORM_TEMPLATES_DIRECTORY =  self::PARTIAL_TEMPLATES_DIRECTORY . '/form';
+  const FORM_TEMPLATES_DIRECTORY = self::PARTIAL_TEMPLATES_DIRECTORY . '/form';
 
   const FORM_FIELDS_KEY = 'fields';
 
@@ -69,6 +69,7 @@ abstract class FormCallbackBase extends PartialCallbackBase {
             $processed_form_fields[$key] = new PartialCallbackRenderer($checkbox_group_callback);
             break;
           case FormFieldType::SUBMIT:
+          case FormFieldType::BUTTON:
             $button_callback = new ButtonCallback($field);
             $processed_form_fields[$key] = new PartialCallbackRenderer($button_callback);
             break;

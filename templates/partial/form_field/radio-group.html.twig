@@ -1,4 +1,4 @@
-<div class="sp-radio-group-wrap">
+<div id="{{ id }}" class="sp-radio-group-wrap js-form-element">
     {% if label %}
         <label class="sp-radio-group-label">
             {{ label }}
@@ -7,7 +7,7 @@
     {% for option in options %}
         <label class="sp-radio-label">
             {{ option.label }}
-            <input class="sp-radio" type="radio" value="{{ option.value }}">
+            <input id="{{ option.id }}" class="sp-radio" type="radio" value="{{ option.value }}">
         </label>
     {% endfor %}
 </div>

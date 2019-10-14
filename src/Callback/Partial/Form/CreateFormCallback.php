@@ -43,7 +43,8 @@ class CreateFormCallback extends FormCallbackBase {
     $form_fields['select_field'] = [
       'type' => FormFieldType::SELECT_GROUP,
       'label' => 'Select one option',
-      'options' => $select_field_options
+      'options' => $select_field_options,
+      'classes' => 'js-select'
     ];
 
     $form_fields['text_input_field'] = [
@@ -91,6 +92,11 @@ class CreateFormCallback extends FormCallbackBase {
       'type' => FormFieldType::CHECKBOX_GROUP,
       'label' => 'Pick one option',
       'options' => $checkbox_button_options
+    ];
+
+    $form_fields['button'] = [
+      'type' => FormFieldType::BUTTON,
+      'label' => 'Button'
     ];
 
     $form_fields['submit'] = [
