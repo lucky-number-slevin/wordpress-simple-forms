@@ -37,6 +37,9 @@ abstract class FormCallbackBase extends PartialCallbackBase {
   }
 
   /**
+   * Wrap form fields with their corresponding callback classes,
+   * and add some default html classes to them
+   *
    * @inheritDoc
    * @throws \ReflectionException
    * @throws \Exception
@@ -51,31 +54,29 @@ abstract class FormCallbackBase extends PartialCallbackBase {
         if (!FormFieldType::isValid($field_type)) {
           throw new \Exception("Invalid field type '$field_type'");
         }
+        $field_class = NULL;
         switch ($field_type) {
           case FormFieldType::TEXT_INPUT:
-            $text_input_callback = new TextInputCallback($field);
-            $processed_form_fields[$key] = new PartialCallbackRenderer($text_input_callback);
+            $field_class = TextInputCallback::class;
             break;
           case FormFieldType::SELECT_GROUP:
-            $select_group_callback = new SelectGroupCallback($field);
-            $processed_form_fields[$key] = new PartialCallbackRenderer($select_group_callback);
+            $field_class = SelectGroupCallback::class;
             break;
           case FormFieldType::RADIO_GROUP:
-            $radio_group_callback = new RadioGroupCallback($field);
-            $processed_form_fields[$key] = new PartialCallbackRenderer($radio_group_callback);
+            $field_class = RadioGroupCallback::class;
             break;
           case FormFieldType::CHECKBOX_GROUP:
-            $checkbox_group_callback = new CheckboxGroupCallback($field);
-            $processed_form_fields[$key] = new PartialCallbackRenderer($checkbox_group_callback);
+            $field_class = CheckboxGroupCallback::class;
             break;
           case FormFieldType::SUBMIT:
           case FormFieldType::BUTTON:
-            $button_callback = new ButtonCallback($field);
-            $processed_form_fields[$key] = new PartialCallbackRenderer($button_callback);
+            $field_class = ButtonCallback::class;
             break;
         }
+        if ($field_class) {
+          $processed_form_fields[$key] = new PartialCallbackRenderer(new $field_class($field));
+        }
       }
-      // replace unprocessed form fields with processed form fields
       $template_variables[self::FORM_FIELDS_KEY] = $processed_form_fields;
       return $template_variables;
     }

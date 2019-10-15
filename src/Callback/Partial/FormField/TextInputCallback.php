@@ -17,14 +17,4 @@ class TextInputCallback extends FormFieldCallbackBase {
     return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/text-input.html.twig';
   }
 
-  /**
-   * @inheritDoc
-   */
-  public function getAllowedTemplateVariables() {
-    return [
-      'name',
-      'label',
-    ];
-  }
-
 }

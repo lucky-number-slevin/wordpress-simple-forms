@@ -17,14 +17,4 @@ class RadioGroupCallback extends FormFieldCallbackBase {
     return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/radio-group.html.twig';
   }
 
-  /**
-   * @inheritDoc
-   */
-  public function getAllowedTemplateVariables() {
-    return [
-      'label',
-      'options'
-    ];
-  }
-
 }

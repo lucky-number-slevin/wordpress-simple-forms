@@ -17,14 +17,4 @@ class CheckboxGroupCallback extends FormFieldCallbackBase {
     return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/checkbox-group.html.twig';
   }
 
-  /**
-   * @return array
-   */
-  public function getAllowedTemplateVariables() {
-    return [
-      'label',
-      'options'
-    ];
-  }
-
 }

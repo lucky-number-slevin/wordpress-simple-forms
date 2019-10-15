@@ -18,6 +18,9 @@ use Twig\Loader\FilesystemLoader;
 class TemplateManagerBase {
 
   const TEMPLATES_DIR = 'templates';
+
+  const HTML_CLASS_PREFIX = 'sp-';
+
   /**
    * @var string
    */

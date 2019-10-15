@@ -17,14 +17,4 @@ class ButtonCallback extends FormFieldCallbackBase {
     return static::FORM_FIELD_TEMPLATES_DIRECTORY . '/button.html.twig';
   }
 
-  /**
-   * @return array
-   */
-  public function getAllowedTemplateVariables() {
-    return [
-      'label',
-      'type'
-    ];
-  }
-
 }

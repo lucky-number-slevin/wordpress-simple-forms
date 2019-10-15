@@ -44,7 +44,6 @@ class CreateFormCallback extends FormCallbackBase {
       'type' => FormFieldType::SELECT_GROUP,
       'label' => 'Select one option',
       'options' => $select_field_options,
-      'classes' => 'js-select'
     ];
 
     $form_fields['text_input_field'] = [
@@ -69,6 +68,7 @@ class CreateFormCallback extends FormCallbackBase {
 
     $form_fields['radio_group_field'] = [
       'type' => FormFieldType::RADIO_GROUP,
+      'id' => 1,
       'label' => 'Pick one option',
       'options' => $radio_button_options
     ];
@@ -94,19 +94,15 @@ class CreateFormCallback extends FormCallbackBase {
       'options' => $checkbox_button_options
     ];
 
-    $form_fields['button'] = [
-      'type' => FormFieldType::BUTTON,
-      'label' => 'Button'
-    ];
-
     $form_fields['submit'] = [
       'type' => FormFieldType::SUBMIT,
       'label' => 'Create'
     ];
 
     return [
+      'id' => 'sp-create-form',
       'title' => 'Create a Simple Form',
-      'action' => '/actiooooooooooooooooooooooooooon',
+      'action' => '/build-form',
       self::FORM_FIELDS_KEY => $form_fields
     ];
   }
