@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
 
     const createFormId = 'sp-create-form';
-    $("#sp-create-form").submit(function (e) {
+    $(`#${createFormId}`).submit(function (e) {
         e.preventDefault();
         const form = $(this);
 
@@ -24,19 +24,29 @@ jQuery(document).ready(function ($) {
             const formElement = $(this);
             singleAnswerQuestions.push({
                 answerId: formElement.attr('id'),
-                answerValue: formElement.find('.js-form-element-value').attr('value')});
+                answerValue: formElement.find('.js-form-element-value').attr('value')
+            });
         });
         console.log('MULTIPLE ANSWER QUESTIONS', singleAnswerQuestions); // TODO: REMOVE
 
-        // $.ajax({
-        //     type: "POST",
-        //     url: url,
-        //     data: form.serialize(), // serializes the form's elements.
-        //     success: function(data)
-        //     {
-        //         alert(data); // show response from the php script.
-        //     }
-        // });
+        const url = form.attr('action');
+
+        console.log(url);
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                singleAnswerQuestions: singleAnswerQuestions,
+                multipleAnswerQuestions: multipleAnswerQuestions
+            },
+            success: function (data) {
+                alert('SUCCESS'); // show response from the php script.
+            },
+            error: function (e) {
+                console.log(e) // show response from the php script.
+            }
+        });
 
     });
 

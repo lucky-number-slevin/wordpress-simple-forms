@@ -102,7 +102,7 @@ class CreateFormCallback extends FormCallbackBase {
     return [
       'id' => 'sp-create-form',
       'title' => 'Create a Simple Form',
-      'action' => '/build-form',
+      'action' => '/wp-json/simple-forms/v1/create-form',
       self::FORM_FIELDS_KEY => $form_fields
     ];
   }

@@ -22,7 +22,7 @@ abstract class PageCallbackBase extends TemplateManagerBase implements PageCallb
    */
   const PAGE_TEMPLATES_DIRECTORY = 'page';
 
-  const DEFAULT_PAGE_TEMPLATE_PATH =  self::PAGE_TEMPLATES_DIRECTORY . '/page.html.twig';
+  const DEFAULT_PAGE_TEMPLATE_PATH = self::PAGE_TEMPLATES_DIRECTORY . '/page.html.twig';
 
   /**
    * @var string

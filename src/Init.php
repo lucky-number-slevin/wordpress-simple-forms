@@ -6,9 +6,14 @@ namespace SimpleForms;
 
 use SimpleForms\Base\Enqueue;
 use SimpleForms\Base\SettingsLink;
+use SimpleForms\Controller\CreateFormController;
 use SimpleForms\Page\Admin;
 
 
+/**
+ * Class Init
+ * @package SimpleForms
+ */
 final class Init {
 
   public static function get_services() {
@@ -16,7 +21,8 @@ final class Init {
       SettingsLink::class,
       Enqueue::class,
       Admin::class,
-      Database::class
+      Database::class,
+      CreateFormController::class
     ];
   }
 

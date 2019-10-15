@@ -89,7 +89,7 @@ abstract class FormFieldCallbackBase extends PartialCallbackBase {
         $base_html_class = 'checkbox';
         break;
     }
-    if($base_html_class) {
+    if ($base_html_class) {
       $this->generateDefaultHtmlClasses($variables, $base_html_class, $is_multiple_answer_question);
     }
   }
@@ -155,7 +155,7 @@ abstract class FormFieldCallbackBase extends PartialCallbackBase {
         $base_class_name . $input_class_suffix,
         self::SINGLE_ANSWER_QUESTION_JS_CLASS . $input_class_suffix
       ];
-      $variables['input_classes'] = implode( ' ', $input_classes);
+      $variables['input_classes'] = implode(' ', $input_classes);
     }
   }
 
