@@ -6,7 +6,7 @@ namespace SimpleForms;
 
 use SimpleForms\Base\Enqueue;
 use SimpleForms\Base\SettingsLink;
-use SimpleForms\Controller\CreateFormController;
+use SimpleForms\Controller\CalculatorFormController;
 use SimpleForms\Page\Admin;
 
 
@@ -22,7 +22,7 @@ final class Init {
       Enqueue::class,
       Admin::class,
       Database::class,
-      CreateFormController::class
+      CalculatorFormController::class
     ];
   }
 

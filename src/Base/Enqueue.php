@@ -43,7 +43,7 @@ class Enqueue extends PluginBase {
    */
   function getScriptFiles() {
     return [
-      'main' => 'script.js',
+      'main' => 'main.js',
       'form_service' => 'services/FormService.js',
       'form_handler' => 'handlers/FormHandler.js',
       'form_helper' => 'helpers/FormHelper.js',
@@ -58,7 +58,7 @@ class Enqueue extends PluginBase {
    */
   function getStyleFiles() {
     return [
-      'main' => 'style.css'
+      'main' => 'main.css'
     ];
   }
 

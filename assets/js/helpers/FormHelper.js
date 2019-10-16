@@ -1,6 +1,7 @@
 class FormHelper {
 
     // Extract all form group elements (select, checkbox group, etc.)
+    // Returns and array of objects like: {optionId: string, isSelected: bool}
     extractMultipleAnswerQuestions = function (form) {
         const formGroupFieldIdentifier = '.js-form-group';
         const formGroupFieldOptionIdentifier = '.js-form-group-option';
@@ -18,6 +19,7 @@ class FormHelper {
     };
 
     // Extract all form elements with a single value (e.g. text input)
+    // Returns an array of objects like: {answerId: string, answerValue: string}
     getSingleAnswerQuestions = function (form) {
         const singleAnswerQuestions = [];
         form.children('.js-form-element').each(function (index, value) {
