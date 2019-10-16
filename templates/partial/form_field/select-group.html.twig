@@ -1,11 +1,11 @@
-<div id="{{ id }}" class="{{ classes }}">
+<div id="{{ id }}" class="{{ classes }}" style="{{ style }}">
 
     {% if label %}
     <label class="{{ label.classes }}">
         {{ label.value }}
         {% endif %}
 
-        <select class="sp-select">
+        <select class="sf-select">
             {% for option in options %}
                 <option id="{{ option.id }}" class="{{ option.classes }}" value="{{ option.value }}">
                     {{ option.label }}

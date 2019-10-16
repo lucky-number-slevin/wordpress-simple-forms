@@ -1,9 +1,6 @@
-<div id="{{ id }}" class="{{ classes }}">
+<div   id="{{ id }}" class="{{ classes }}" style="{{ style }}">
     {% if label %}
-    <label class="{{ label.classes }}"> {{ label.value }}
-        {% endif %}
-        <input class="{{ input_classes }}" type="text"/>
-        {% if label %}
-    </label>
+        <label class="{{ label.classes }}"> {{ label.value }}</label>
     {% endif %}
+    <input class="{{ input_classes }}" type="text"/>
 </div>

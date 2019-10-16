@@ -1,0 +1,29 @@
+.sf-page-wrap {
+    width: 98%;
+}
+
+.sf-page-title {
+    border-bottom: 2px solid grey;
+    padding-bottom: 1%;
+    margin: 3% 0;
+}
+
+.sf-form-field {
+    margin: 1% 0;
+}
+
+.sf-form-field label {
+    width: 40%;
+    display: inline-block;
+}
+
+.sf-form-field input {
+    width: 50%;
+    float: right;
+    clear: both;
+}
+
+#sf-create-calculator-form-submit {
+    float: right;
+    clear: both;
+}

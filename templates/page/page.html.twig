@@ -1,10 +1,12 @@
-{% if title %}
-    <h1 class="sp-page-title">{{ title }}</h1>
-{% endif %}
-{% if children is not empty %}
-    <div class="sp-page-content">
-        {% for child in children %}
-            {{ child.content }}
-        {% endfor %}
-    </div>
-{% endif %}
+<div class="sf-page-wrap">
+    {% if title %}
+        <h1 class="sf-page-title">{{ title }}</h1>
+    {% endif %}
+    {% if children is not empty %}
+        <div class="sf-page-content">
+            {% for child in children %}
+                {{ child.content }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

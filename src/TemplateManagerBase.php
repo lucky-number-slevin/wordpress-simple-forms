@@ -19,7 +19,7 @@ class TemplateManagerBase {
 
   const TEMPLATES_DIR = 'templates';
 
-  const HTML_CLASS_PREFIX = 'sp-';
+  const HTML_CLASS_PREFIX = 'sf-';
 
   /**
    * @var string

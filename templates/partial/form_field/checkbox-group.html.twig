@@ -1,11 +1,11 @@
-<div id="{{ id }}" class="{{ classes }}">
+<div id="{{ id }}" class="{{ classes }}" style="{{ style }}">
     {% if label %}
         <label class="{{ label.classes }}">
             {{ label.value }}
         </label>
     {% endif %}
     {% for option in options %}
-        <label class="sp-checkbox-label">
+        <label class="sf-checkbox-label">
             {{ option.label }}
             <input id="{{ option.id }}" class="{{ option.classes }}" type="checkbox" value="{{ option.value }}">
         </label>

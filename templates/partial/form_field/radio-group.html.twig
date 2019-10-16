@@ -1,11 +1,11 @@
-<fieldset id="{{ id }}" class="{{ classes }}">
+<fieldset id="{{ id }}" class="{{ classes }}" style="{{ style }}">
     {% if label %}
         <label class="{{ label.classes }}">
             {{ label.value }}
         </label>
     {% endif %}
     {% for option in options %}
-        <label class="sp-radio-label">
+        <label class="sf-radio-label">
             {{ option.label }}
             <input id="{{ option.id }}" class="{{ option.classes }}" type="radio"
                    value="{{ option.value }}" name="{{ id }}">

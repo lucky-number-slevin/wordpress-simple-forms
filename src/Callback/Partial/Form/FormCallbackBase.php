@@ -11,6 +11,7 @@ use SimpleForms\Callback\Partial\FormField\SelectGroupCallback;
 use SimpleForms\Callback\Partial\FormField\TextInputCallback;
 use SimpleForms\Callback\Partial\PartialCallbackBase;
 use SimpleForms\Callback\PartialCallbackRenderer;
+use SimpleForms\Controller\ControllerBase;
 use SimpleForms\Enum\FormFieldType;
 
 
@@ -46,6 +47,10 @@ abstract class FormCallbackBase extends PartialCallbackBase {
    */
   public function processTemplateVariables() {
     $template_variables = $this->getTemplateVariables();
+
+    // Concatenate the plugin route's namespace to form action
+    $template_variables['action'] = '/wp-json/' . ControllerBase::NAMESPACE . '/' . trim($template_variables['action'], '/');
+
     $form_fields = $template_variables[self::FORM_FIELDS_KEY];
     $processed_form_fields = [];
     if ($form_fields) {

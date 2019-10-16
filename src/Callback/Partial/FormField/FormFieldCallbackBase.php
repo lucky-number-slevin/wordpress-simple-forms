@@ -63,6 +63,7 @@ abstract class FormFieldCallbackBase extends PartialCallbackBase {
     }
 
     $this->applyDefaultHtmlClasses($variables);
+    $this->processVariable($variables, 'style');
 
     return $variables;
   }
@@ -115,6 +116,7 @@ abstract class FormFieldCallbackBase extends PartialCallbackBase {
     $wrapper_class = $base_class_name . '-wrap';
     $field_classes = $variables['classes'] ?? [];
 
+    $field_classes[] = self::HTML_CLASS_PREFIX . 'form-field';
     if ($is_multiple_answer_question) {
       $field_classes = array_merge($field_classes, [
         $wrapper_class,
@@ -169,11 +171,38 @@ abstract class FormFieldCallbackBase extends PartialCallbackBase {
     return [
       'id',
       'classes',
+      'name',
       'type',
       'value',
       'label',
-      'options'
+      'options',
+      'style'
     ];
+  }
+
+  /**
+   * Transform variable value to html friendly type (string)
+   *
+   * @param array $variables
+   * @param string $variable
+   */
+  private function processVariable(array &$variables, string $variable) {
+    if(!in_array($variable, $this->getAllowedTemplateVariables()) || !isset($variables['style'])) {
+      return;
+    }
+
+    switch ($variable) {
+      case 'style':
+        $style_props = $variables['style'];
+        if(!is_array($style_props)) {
+          return;
+        }
+        $processed_style = '';
+        foreach ($style_props as $name => $value) {
+          $processed_style .= $name . ': ' . $value . '; ';
+        }
+        $variables['style'] = $processed_style;
+    }
   }
 
 }

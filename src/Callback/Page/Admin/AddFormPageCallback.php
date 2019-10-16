@@ -5,7 +5,7 @@ namespace SimpleForms\Callback\Page\Admin;
 
 
 use SimpleForms\Callback\Page\PageCallbackBase;
-use SimpleForms\Callback\Partial\Form\CreateFormCallback;
+use SimpleForms\Callback\Partial\Form\CreateCalculatorFormCallback;
 
 
 /**
@@ -35,7 +35,7 @@ class AddFormPageCallback extends PageCallbackBase {
    */
   public function getChildCallbacks() {
     return [
-      CreateFormCallback::class
+      CreateCalculatorFormCallback::class
     ];
   }
 
