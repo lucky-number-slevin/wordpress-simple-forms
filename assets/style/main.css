@@ -27,3 +27,24 @@
     float: right;
     clear: both;
 }
+
+.sf-error-message,
+.sf-success-message {
+    margin: 3% 0;
+    padding: 2%;
+    border: 2px solid red;
+    background-color: #FEC9C9;
+    color: red;
+}
+
+.sf-error-message{
+    border: 2px solid red;
+    background-color: #FEC9C9;
+    color: red;
+}
+
+.sf-success-message {
+    border: 2px solid green;
+    background-color: palegreen;
+    color: darkgreen;
+}

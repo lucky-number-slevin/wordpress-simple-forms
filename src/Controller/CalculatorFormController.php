@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use ReflectionException;
+use SimpleForms\Entity\Form\Form;
 use SimpleForms\Enum\FormType;
 use SimpleForms\Mapper\FormCalculatorMapper;
 use SimpleForms\Mapper\FormMapper;
@@ -80,14 +81,24 @@ class CalculatorFormController extends ControllerBase {
 
     $form_calculators = [];
     $calculators = $body['calculators'];
-    foreach ($calculators as $calculator) {
-      $calculator['form_id'] = $new_form->getId();
-      $new_calculator = $this->formCalculatorMapper->arrayToEntity($calculator);
-      $form_calculators[] = $new_calculator;
+    if(!empty($calculators)) {
+      foreach ($calculators as $calculator) {
+        $calculator['form_id'] = $new_form->getId();
+        $new_calculator = $this->formCalculatorMapper->arrayToEntity($calculator);
+        $form_calculators[] = $new_calculator;
+      }
+      $new_form->setFormCalculators($form_calculators);
     }
-    $new_form->setFormCalculators($form_calculators);
     $this->entityManager->persist($new_form);
     $this->entityManager->flush();
+
+    if($new_form->getId()) {
+      return new WP_REST_Response([
+        'message' => 'Form "' . $new_form->getName() . '" has been created successfully.',
+        'status' => 200
+      ]);
+    }
+    return new WP_REST_Response('Something went wrong while trying to create "' . $new_form->getName() . '" form.', 500);
   }
 
 }

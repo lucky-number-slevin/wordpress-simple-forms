@@ -1,8 +1,16 @@
 class FormHelper {
 
+    getSuccessMessageClass() {
+        return 'sf-success-message';
+    }
+
+    getErrorMessageClass() {
+        return 'sf-error-message';
+    }
+
     // Extract all form group elements (select, checkbox group, etc.)
     // Returns and array of objects like: {optionId: string, isSelected: bool}
-    extractMultipleAnswerQuestions = function (form) {
+    extractMultipleAnswerQuestions(form) {
         const formGroupFieldIdentifier = '.js-form-group';
         const formGroupFieldOptionIdentifier = '.js-form-group-option';
         const multipleAnswerQuestions = [];
@@ -20,7 +28,7 @@ class FormHelper {
 
     // Extract all form elements with a single value (e.g. text input)
     // Returns an array of objects like: {answerId: string, answerValue: string}
-    getSingleAnswerQuestions = function (form) {
+    getSingleAnswerQuestions(form) {
         const singleAnswerQuestions = [];
         form.children('.js-form-element').each(function (index, value) {
             const formElement = jQuery(this);
@@ -32,7 +40,7 @@ class FormHelper {
         return singleAnswerQuestions;
     };
 
-    appendCreateAnotherFormCalculatorBtn = function () {
+    appendCreateAnotherFormCalculatorBtn() {
         const addNewCalculatorBtnId = 'sf-add-new-form-calculator';
         const addNewCalculatorBtnIdentifier = `#${addNewCalculatorBtnId}`;
         let addNewCalculatorBtn = jQuery(addNewCalculatorBtnIdentifier);
@@ -54,4 +62,16 @@ class FormHelper {
         }
     };
 
+    appendMessage(element, message, error = false) {
+        let messageClass = this.getSuccessMessageClass();
+        if(error) {
+            messageClass = this.getErrorMessageClass();
+        }
+        element.after(jQuery(`<div class="${messageClass}">${message}</div>`));
+    };
+
+    removeMessages() {
+        jQuery(`.${this.getErrorMessageClass()}`).remove();
+        jQuery(`.${this.getSuccessMessageClass()}`).remove();
+    }
 }

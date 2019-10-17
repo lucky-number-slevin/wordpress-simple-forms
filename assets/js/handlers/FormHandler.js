@@ -1,13 +1,10 @@
 class FormHandler {
 
     handleCreateCalculatorForm = function (form) {
-        const url = form.attr('action');
-
         const formHelper = new FormHelper();
+        formHelper.removeMessages();
 
-        // const multipleAnswerQuestions = formHelper.extractMultipleAnswerQuestions(form);
         const singleAnswerQuestions = formHelper.getSingleAnswerQuestions(form);
-
         const formData = {};
         const calculatorsData = [];
         singleAnswerQuestions.forEach(function (item, index) {
@@ -17,20 +14,24 @@ class FormHandler {
             } else if (item.answerId.includes('calculator-name') && itemValue) {
                 calculatorsData.push({
                     name: itemValue
-                })
+                });
             }
         });
-
+        const url = form.attr('action');
         const data = {
             form: formData,
             calculators: calculatorsData
         };
 
         const formService = new FormService();
-        formService.createCalculatorForm(url, data).then(function (d) {
-            console.log(d);
-        }).catch(function (e) {
-            console.error(e);
+        formService.createCalculatorForm(url, data).then(function (data, status) {
+            formHelper.appendMessage(form, data.message);
+            form.remove();
+        }).catch(function (error) {
+            const errorMessage = error.responseJSON;
+            formHelper.appendMessage(form, errorMessage, true);
+            console.error(`HTTP Error; Status ${error.status}; Message: "${errorMessage}"`);
         });
     }
+
 }
