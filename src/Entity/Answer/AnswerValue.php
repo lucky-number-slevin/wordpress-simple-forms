@@ -6,7 +6,7 @@ namespace SimpleForms\Entity\Answer;
 
 use Doctrine\ORM\Mapping;
 use SimpleForms\Entity\EntityBase;
-use SimpleForms\Entity\Form\FormResultCalculator;
+use SimpleForms\Entity\Form\FormCalculator;
 
 
 /**
@@ -21,6 +21,7 @@ class AnswerValue extends EntityBase {
   /**
    * @var Answer
    * @Mapping\ManyToOne(targetEntity="Answer", inversedBy="answerValues")
+   * @Mapping\JoinColumn(name="answer_id", referencedColumnName="id", nullable=false)
    */
   private $answer;
 
@@ -31,11 +32,11 @@ class AnswerValue extends EntityBase {
   private $value;
 
   /**
-   * @var FormResultCalculator
-   * @Mapping\ManyToOne(targetEntity="SimpleForms\Entity\Form\FormResultCalculator", inversedBy="answerValues")
-   * @Mapping\Column(name="form_result_calculator_id")
+   * @var FormCalculator
+   * @Mapping\ManyToOne(targetEntity="SimpleForms\Entity\Form\FormCalculator", inversedBy="answerValues")
+   * @Mapping\JoinColumn(name="form_calculator_id", referencedColumnName="id", nullable=false)
    */
-  private $formResultCalculator;
+  private $formCalculator;
 
   /**
    * @var array
@@ -72,17 +73,17 @@ class AnswerValue extends EntityBase {
   }
 
   /**
-   * @return FormResultCalculator
+   * @return FormCalculator
    */
-  public function getFormResultCalculator() {
-    return $this->formResultCalculator;
+  public function getFormCalculator() {
+    return $this->formCalculator;
   }
 
   /**
-   * @param FormResultCalculator $formResultCalculator
+   * @param FormCalculator $formCalculator
    */
-  public function setFormResultCalculator(FormResultCalculator $formResultCalculator) {
-    $this->formResultCalculator = $formResultCalculator;
+  public function setFormCalculator(FormCalculator $formCalculator) {
+    $this->formCalculator = $formCalculator;
   }
 
   /**

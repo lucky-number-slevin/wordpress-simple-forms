@@ -9,31 +9,53 @@ use SimpleForms\Entity\EntityBase;
 
 
 /**
- * Class FormResultCalculator
+ * Class FormCalculator
  * @package SimpleForms\Entity\Form
  *
  * @Mapping\Entity
- * @Mapping\Table(name="form_result_calculator")
+ * @Mapping\Table(name="form_calculator")
  */
-class FormResultCalculator extends EntityBase {
+class FormCalculator extends EntityBase {
+
+  /**
+   * @var string
+   * @Mapping\Column(type="string")
+   */
+  private $name;
 
   /**
    * @var Form
-   * @Mapping\ManyToOne(targetEntity="Form", inversedBy="formResultCalculators")
+   * @Mapping\ManyToOne(targetEntity="Form", inversedBy="formCalculators")
+   * @Mapping\JoinColumn(name="form_id", referencedColumnName="id", nullable=false)
    */
   private $form;
 
   /**
    * @var array
-   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Answer\AnswerValue", mappedBy="formResultCalculator")
+   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Answer\AnswerValue", mappedBy="formCalculator", cascade={"persist", "remove"})
    */
   private $answerValues;
 
   /**
    * @var array
-   * @Mapping\OneToMany(targetEntity="FormResultMessage", mappedBy="formResultCalculator")
+   * @Mapping\OneToMany(targetEntity="FormResultMessage", mappedBy="formCalculator", cascade={"persist", "remove"})
    */
   private $formResultMessages;
+
+
+  /**
+   * @return string
+   */
+  public function getName() {
+    return $this->name;
+  }
+
+  /**
+   * @param string $name
+   */
+  public function setName(string $name) {
+    $this->name = $name;
+  }
 
   /**
    * @return Form

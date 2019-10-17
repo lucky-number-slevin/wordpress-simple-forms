@@ -22,6 +22,7 @@ class MultipleAnswerQuestion extends EntityBase {
   /**
    * @var Form
    * @Mapping\ManyToOne(targetEntity="SimpleForms\Entity\Form\Form", inversedBy="multipleAnswerQuestions")
+   * @Mapping\JoinColumn(name="form_id", referencedColumnName="id", nullable=false)
    */
   private $form;
 
@@ -33,7 +34,7 @@ class MultipleAnswerQuestion extends EntityBase {
 
   /**
    * @var array
-   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Answer\Answer", mappedBy="question")
+   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Answer\Answer", mappedBy="question", cascade={"persist", "remove"})
    */
   private $answers;
 
@@ -72,7 +73,9 @@ class MultipleAnswerQuestion extends EntityBase {
    * @param string $type
    */
   public function setType(string $type) {
-    $this->type = $type;
+    if (QuestionType::isValidQuestionType($type, $this)) {
+      $this->type = $type;
+    }
   }
 
   /**

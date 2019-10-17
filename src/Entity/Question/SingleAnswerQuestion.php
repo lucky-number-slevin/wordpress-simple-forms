@@ -22,6 +22,7 @@ class SingleAnswerQuestion extends EntityBase {
   /**
    * @var Form
    * @Mapping\ManyToOne(targetEntity="SimpleForms\Entity\Form\Form", inversedBy="singleAnswerQuestions")
+   * @Mapping\JoinColumn(name="form_id", referencedColumnName="id", nullable=false)
    */
   private $form;
 

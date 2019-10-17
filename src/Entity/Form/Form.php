@@ -32,25 +32,25 @@ class Form extends EntityBase {
 
   /**
    * @var array
-   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Question\SingleAnswerQuestion", mappedBy="form")
+   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Question\SingleAnswerQuestion", mappedBy="form", cascade={"persist", "remove"})
    */
   private $singleAnswerQuestions;
 
   /**
    * @var array
-   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Question\MultipleAnswerQuestion", mappedBy="form")
+   * @Mapping\OneToMany(targetEntity="SimpleForms\Entity\Question\MultipleAnswerQuestion", mappedBy="form", cascade={"persist", "remove"})
    */
   private $multipleAnswerQuestions;
 
   /**
-   * @var FormResultCalculator
-   * @Mapping\OneToMany(targetEntity="FormResultCalculator", mappedBy="form")
+   * @var array
+   * @Mapping\OneToMany(targetEntity="FormCalculator", mappedBy="form", cascade={"persist", "remove"})
    */
-  private $formResultCalculators;
+  private $formCalculators;
 
   /**
    * @var array
-   * @Mapping\OneToMany(targetEntity="FormSubmission", mappedBy="form")
+   * @Mapping\OneToMany(targetEntity="FormSubmission", mappedBy="form", cascade={"persist", "remove"})
    */
   private $formSubmissions;
 
@@ -123,17 +123,21 @@ class Form extends EntityBase {
   }
 
   /**
-   * @return FormResultCalculator
+   * @return array
    */
-  public function getFormResultCalculators() {
-    return $this->formResultCalculators;
+  public function getFormCalculators() {
+    return $this->formCalculators;
   }
 
   /**
-   * @param FormResultCalculator $formResultCalculators
+   * @param array $formCalculators
    */
-  public function setFormResultCalculators(FormResultCalculator $formResultCalculators) {
-    $this->formResultCalculators = $formResultCalculators;
+  public function setFormCalculators(array $formCalculators) {
+    /** @var FormCalculator $calculator */
+    foreach ($formCalculators as &$calculator) {
+      $calculator->setForm($this);
+    }
+    $this->formCalculators = $formCalculators;
   }
 
   /**

@@ -18,11 +18,11 @@ use SimpleForms\Entity\EntityBase;
 class FormResultMessage extends EntityBase {
 
   /**
-   * @var FormResultCalculator
+   * @var FormCalculator
    * @Mapping\ManyToOne(targetEntity="FormResultMessage", inversedBy="formResultMessages")
-   * @Mapping\Column(name="form_result_calculator_id")
+   * @Mapping\JoinColumn(name="form_calculator_id", referencedColumnName="id", nullable=false)
    */
-  private $formResultCalculator;
+  private $formCalculator;
 
   /**
    * @var string
@@ -43,17 +43,17 @@ class FormResultMessage extends EntityBase {
   private $level;
 
   /**
-   * @return FormResultCalculator
+   * @return FormCalculator
    */
-  public function getFormResultCalculator() {
-    return $this->formResultCalculator;
+  public function getFormCalculator() {
+    return $this->formCalculator;
   }
 
   /**
-   * @param FormResultCalculator $formResultCalculator
+   * @param FormCalculator $formCalculator
    */
-  public function setFormResultCalculator(FormResultCalculator $formResultCalculator) {
-    $this->formResultCalculator = $formResultCalculator;
+  public function setFormCalculator(FormCalculator $formCalculator) {
+    $this->formCalculator = $formCalculator;
   }
 
   /**

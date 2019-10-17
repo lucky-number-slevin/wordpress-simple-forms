@@ -5,8 +5,9 @@
  */
 
 
+use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use SimpleForms\Database;
+use SimpleForms\Storage\Database;
 
 
 $wp_root_path = dirname(__FILE__, 4);
@@ -22,6 +23,17 @@ if (!file_exists($wp_config_path)) {
  */
 require_once $wp_config_path;
 
-$db = new Database();
+$entityManager = Database::getConnection()->getEntityManager();
 
-return ConsoleRunner::createHelperSet($db->getEntityManager());
+try {
+  // get currently used platform
+  $dbPlatform = $entityManager->getConnection()->getDatabasePlatform();
+  // interpret BIT as boolean
+  $dbPlatform->registerDoctrineTypeMapping('bit', 'boolean');
+  $dbPlatform->registerDoctrineTypeMapping('enum', 'string');
+} catch (DBALException $e) {
+  var_dump($e);
+}
+
+
+return ConsoleRunner::createHelperSet($entityManager);

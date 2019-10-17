@@ -21,6 +21,7 @@ class Answer extends EntityBase {
   /**
    * @var MultipleAnswerQuestion
    * @Mapping\ManyToOne(targetEntity="SimpleForms\Entity\Question\MultipleAnswerQuestion", inversedBy="answers")
+   * @Mapping\JoinColumn(name="question_id", referencedColumnName="id", nullable=false)
    */
   private $question;
 
@@ -36,7 +37,7 @@ class Answer extends EntityBase {
 
   /**
    * @var AnswerValue
-   * @Mapping\OneToMany(targetEntity="AnswerValue", mappedBy="answer")
+   * @Mapping\OneToMany(targetEntity="AnswerValue", mappedBy="answer", cascade={"persist", "remove"})
    */
   private $answerValues;
 

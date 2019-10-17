@@ -21,7 +21,6 @@ final class Init {
       SettingsLink::class,
       Enqueue::class,
       Admin::class,
-      Database::class,
       CalculatorFormController::class
     ];
   }

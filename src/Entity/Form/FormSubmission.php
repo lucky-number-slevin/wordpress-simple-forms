@@ -21,6 +21,7 @@ class FormSubmission extends EntityBase {
   /**
    * @var Form
    * @Mapping\ManyToOne(targetEntity="Form", inversedBy="formSubmissions")
+   * @Mapping\JoinColumn(name="form_id", referencedColumnName="id", nullable=false)
    */
   private $form;
 
