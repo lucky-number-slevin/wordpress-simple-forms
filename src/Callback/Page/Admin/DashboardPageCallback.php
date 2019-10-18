@@ -13,6 +13,8 @@ use SimpleForms\Callback\Page\PageCallbackBase;
  */
 class DashboardPageCallback extends PageCallbackBase {
 
+  const PAGE_TITLE = 'Dashboard';
+
   /**
    * @inheritDoc
    */
@@ -26,7 +28,7 @@ class DashboardPageCallback extends PageCallbackBase {
    */
   public function getTemplateVariables() {
     return [
-      'title' => 'Dashboard'
+      'title' => self::PAGE_TITLE
     ];
   }
 

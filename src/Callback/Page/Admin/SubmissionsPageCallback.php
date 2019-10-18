@@ -13,6 +13,8 @@ use SimpleForms\Callback\Page\PageCallbackBase;
  */
 class SubmissionsPageCallback extends PageCallbackBase {
 
+  const PAGE_TITLE = 'Submissions';
+
   /**
    * @inheritDoc
    */
@@ -25,7 +27,7 @@ class SubmissionsPageCallback extends PageCallbackBase {
    */
   public function getTemplateVariables() {
     return [
-      'title' => 'Submissions'
+      'title' => self::PAGE_TITLE
     ];
   }
 

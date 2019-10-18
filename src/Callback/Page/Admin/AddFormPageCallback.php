@@ -14,6 +14,8 @@ use SimpleForms\Callback\Partial\Form\CreateCalculatorFormCallback;
  */
 class AddFormPageCallback extends PageCallbackBase {
 
+  const PAGE_TITLE = 'Add New Form';
+
   /**
    * @inheritDoc
    */
@@ -26,7 +28,7 @@ class AddFormPageCallback extends PageCallbackBase {
    */
   public function getTemplateVariables() {
     return [
-      'title' => 'Add Form'
+      'title' => self::PAGE_TITLE
     ];
   }
 
