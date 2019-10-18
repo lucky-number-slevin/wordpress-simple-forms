@@ -54,7 +54,6 @@ class Enqueue extends PluginBase {
       }
       $script_name = $this->getEnqueueName($file, 'sp_script');
       $script_path = $this->getEnqueuePath(EnqueueType::SCRIPT, $file->getRealPath());
-      var_dump(['NAME' => $script_name, 'PATH' => $script_path]); // TODO: DELETE
       wp_enqueue_script($script_name, $script_path, ['jquery']);
     }
   }
@@ -76,7 +75,6 @@ class Enqueue extends PluginBase {
       }
       $style_name = $this->getEnqueueName($file, 'sp_style');
       $style_path = $this->getEnqueuePath(EnqueueType::STYLE, $file->getRealPath());
-      var_dump(['NAME' => $style_name, 'PATH' => $style_path]); // TODO: DELETE
       wp_enqueue_style($style_name, $style_path);
     }
   }
