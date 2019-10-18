@@ -1,7 +1,7 @@
 jQuery(document).ready(function (jQuery) {
 
-    const formHelper = new FormHelper();
-    formHelper.appendCreateAnotherFormCalculatorBtn();
+    const formRenderer = new FormRenderer();
+    formRenderer.appendCreateAnotherFormCalculatorBtn();
 
     // Add handler on from submission
     jQuery('#sf-create-calculator-form').submit(function (e) {

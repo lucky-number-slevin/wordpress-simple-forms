@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use ReflectionException;
-use SimpleForms\Entity\Form\Form;
 use SimpleForms\Enum\FormType;
 use SimpleForms\Mapper\FormCalculatorMapper;
 use SimpleForms\Mapper\FormMapper;
@@ -57,6 +56,11 @@ class CalculatorFormController extends ControllerBase {
       'callback' => [$this, 'createCalculatorForm']
     ];
 
+    $routes['create-calculator-form-2'] = [
+      'methods' => 'GET',
+      'callback' => [$this, 'returnFormCallback']
+    ];
+
     return $routes;
   }
 
@@ -69,20 +73,23 @@ class CalculatorFormController extends ControllerBase {
    */
   public function createCalculatorForm(WP_REST_Request $request) {
 
-    $body = json_decode(json_encode(json_decode($request->get_body())), true);
+    $body_params = $request->get_body_params();
 
-    $form_data = $body['form'];
-    if(!isset($form_data['name'])) {
-        return new WP_REST_Response('You did not provide any name for the form.', 400);
+    if (!isset($body_params['form'])) {
+      return new WP_REST_Response('Missing "form" data in ' . __FUNCTION__, 400);
+    }
+
+    $form_data = $body_params['form'];
+    if (!isset($form_data['name'])) {
+      return new WP_REST_Response('You did not provide any name for the form.', 400);
     }
     $form_data['type'] = FormType::CALCULATOR;
 
     $new_form = $this->formMapper->arrayToEntity($form_data);
 
     $form_calculators = [];
-    $calculators = $body['calculators'];
-    if(!empty($calculators)) {
-      foreach ($calculators as $calculator) {
+    if (isset($body_params['calculators'])) {
+      foreach ($body_params['calculators'] as $calculator) {
         $calculator['form_id'] = $new_form->getId();
         $new_calculator = $this->formCalculatorMapper->arrayToEntity($calculator);
         $form_calculators[] = $new_calculator;
@@ -92,7 +99,7 @@ class CalculatorFormController extends ControllerBase {
     $this->entityManager->persist($new_form);
     $this->entityManager->flush();
 
-    if($new_form->getId()) {
+    if ($new_form->getId()) {
       return new WP_REST_Response([
         'message' => 'Form "' . $new_form->getName() . '" has been created successfully.',
         'status' => 200

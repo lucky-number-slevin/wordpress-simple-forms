@@ -30,47 +30,4 @@ class FormHelper {
         return singleAnswerQuestions;
     };
 
-    appendCreateAnotherFormCalculatorBtn() {
-        const addNewCalculatorBtnIdentifier = `#${SF_ADD_NEW_FORM_CALCULATOR_ID}`;
-        let addNewCalculatorBtn = jQuery(addNewCalculatorBtnIdentifier);
-
-        if (!addNewCalculatorBtn.get(0)) {
-
-            const createFormSubmitBtn = jQuery('#sf-create-calculator-form-submit');
-            const addNewCalculatorBtnHtml = jQuery(`<button id="${SF_ADD_NEW_FORM_CALCULATOR_ID}" type="button">Add Another Calculator</button>`);
-            createFormSubmitBtn.before(addNewCalculatorBtnHtml);
-
-            jQuery(addNewCalculatorBtnIdentifier).click(function () {
-                const calculatorNameHiddenFields = jQuery(`.${SF_CALCULATOR_NAME_CLASS}` + ':hidden');
-                calculatorNameHiddenFields.first().show();
-                if (calculatorNameHiddenFields.length < 2) {
-                    jQuery(addNewCalculatorBtnIdentifier).remove();
-                }
-            });
-        }
-    };
-
-    appendBuildFormButton() {
-        jQuery(`.${SF_SUCCESS_MESSAGE_CLASS}`).after(jQuery(`<button id="${SF_ADD_NEW_FORM_CALCULATOR_ID}" type="button">Build Form</button>`));
-        jQuery(`#${SF_ADD_NEW_FORM_CALCULATOR_ID}`).click(function () {
-            // TODO: display/reroute to Build/Edit Form form
-        })
-    }
-
-    appendMessage(element, message, error = false) {
-        let messageClass = SF_SUCCESS_MESSAGE_CLASS;
-        if (error) {
-            messageClass = SF_ERROR_MESSAGE_CLASS;
-        }
-        element.after(jQuery(`<div class="${messageClass}">${message}</div>`));
-    };
-
-    removeMessages() {
-        jQuery(`.${SF_ERROR_MESSAGE_CLASS}`).remove();
-        jQuery(`.${SF_SUCCESS_MESSAGE_CLASS}`).remove();
-    }
-
-    logHttpErrorMessage(error) {
-        console.error(`HTTP Error; Status ${error.status}; Message: "${error.responseJSON}"`);
-    }
 }

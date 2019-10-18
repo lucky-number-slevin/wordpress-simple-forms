@@ -1,8 +1,11 @@
 class FormHandler {
 
     handleCreateCalculatorForm = function (form) {
+        const messageRenderer = new MessageRendere();
+        messageRenderer.removeMessages([SF_SUCCESS_MESSAGE_CLASS, SF_ERROR_MESSAGE_CLASS]);
+
         const formHelper = new FormHelper();
-        formHelper.removeMessages();
+        const formRenderer = new FormRenderer();
 
         const singleAnswerQuestions = formHelper.getSingleAnswerQuestions(form);
         const formData = {};
@@ -25,12 +28,12 @@ class FormHandler {
 
         const formService = new FormService();
         formService.createCalculatorForm(url, data).then(function (data, status) {
-            formHelper.appendMessage(form, data.message);
+            messageRenderer.appendMessage(form, data.message);
             form.remove();
-            formHelper.appendBuildFormButton();
+            formRenderer.appendBuildFormButton();
         }).catch(function (error) {
-            formHelper.appendMessage(form, error.responseJSON, true);
-            formHelper.logHttpErrorMessage(error);
+            messageRenderer.appendMessage(form, error.responseJSON, true);
+            messageRenderer.logHttpErrorMessage(error);
         });
     }
 
