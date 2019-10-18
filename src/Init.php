@@ -18,7 +18,6 @@ final class Init {
 
   public static function get_services() {
     return [
-      SettingsLink::class,
       Enqueue::class,
       CalculatorFormController::class
     ];
