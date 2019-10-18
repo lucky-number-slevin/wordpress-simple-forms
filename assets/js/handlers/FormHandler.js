@@ -27,6 +27,7 @@ class FormHandler {
         formService.createCalculatorForm(url, data).then(function (data, status) {
             formHelper.appendMessage(form, data.message);
             form.remove();
+            formHelper.appendBuildFormButton();
         }).catch(function (error) {
             formHelper.appendMessage(form, error.responseJSON, true);
             formHelper.logHttpErrorMessage(error);
