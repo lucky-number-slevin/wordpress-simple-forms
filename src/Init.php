@@ -20,7 +20,6 @@ final class Init {
     return [
       SettingsLink::class,
       Enqueue::class,
-      Admin::class,
       CalculatorFormController::class
     ];
   }

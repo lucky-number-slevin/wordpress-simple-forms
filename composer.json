@@ -3,7 +3,6 @@
   "description": "Plugin that extends Watu plugin",
   "type": "project",
   "require": {
-    "twig/twig": "^2.12",
     "doctrine/orm": "^2.6"
   },
   "autoload": {
