@@ -28,9 +28,8 @@ class FormHandler {
             formHelper.appendMessage(form, data.message);
             form.remove();
         }).catch(function (error) {
-            const errorMessage = error.responseJSON;
-            formHelper.appendMessage(form, errorMessage, true);
-            console.error(`HTTP Error; Status ${error.status}; Message: "${errorMessage}"`);
+            formHelper.appendMessage(form, error.responseJSON, true);
+            formHelper.logHttpErrorMessage(error);
         });
     }
 

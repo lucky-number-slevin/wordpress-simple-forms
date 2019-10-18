@@ -74,4 +74,8 @@ class FormHelper {
         jQuery(`.${this.getErrorMessageClass()}`).remove();
         jQuery(`.${this.getSuccessMessageClass()}`).remove();
     }
+
+    logHttpErrorMessage(error) {
+        console.error(`HTTP Error; Status ${error.status}; Message: "${error.responseJSON}"`);
+    }
 }
