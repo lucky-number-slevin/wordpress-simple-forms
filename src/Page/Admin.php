@@ -20,10 +20,6 @@ class Admin extends PluginBase {
 
   const PAGE_TITLE_PREFIX = 'SF - ';
 
-  const CALLBACK_CLASS_KEY = 'callback_class';
-
-  const CALLBACK_FUNCTION_KEY = 'callback_function';
-
   const DEFAULT_CALLBACK_FUNCTION = 'renderTemplate';
 
   /**
