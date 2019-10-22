@@ -17,8 +17,6 @@ use Doctrine\ORM\Tools\Setup;
  */
 class Database {
 
-  const TABLE_PREFIX = TABLE_PREFIX . 'sf_';
-
   /**
    * @var EntityManager
    */
@@ -43,7 +41,9 @@ class Database {
     ];
 
     $event_manager = NULL;
-    $table_prefix_object = new TablePrefix(self::TABLE_PREFIX);
+
+    global $wpdb;
+    $table_prefix_object = new TablePrefix($wpdb->prefix . 'sf_');
     $event_manager = new EventManager();
     $event_manager->addEventListener(Events::loadClassMetadata, $table_prefix_object);
 
